@@ -11,7 +11,18 @@ export default defineUserConfig({
   theme: defaultTheme({
     logo: 'https://avatars.githubusercontent.com/u/206335802?s=400&u=df52d23f1e5fde57616a018ea44593df68293aa9&v=4',
     darkmode: 'enable', 
-    navbar: ['/', '/get-started'],
+    navbar: [
+      {
+        text: 'Guides',
+        prefix: '/guides',
+        children: [
+          {
+            text: 'Introduction',
+            link: '/guides/introduction',
+          },
+        ],
+      },
+    ],
   }),
 
   bundler: viteBundler(),
