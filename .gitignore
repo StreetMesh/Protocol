@@ -2,4 +2,4 @@ __docs
 .DS_Store
 .env
 node_modules
-docs/.vuepress
+.idea
