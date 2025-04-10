@@ -22,8 +22,8 @@ export default defineUserConfig({
             link: '/guides/introduction',
           },
           {
-            text: 'Components',
-            link: '/guides/components',
+            text: 'Architecture',
+            link: '/guides/architecture',
           },
         ],
       },
