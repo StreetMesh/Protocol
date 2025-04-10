@@ -27,10 +27,6 @@ export default defineUserConfig({
           },
         ],
       },
-      {
-        text: 'GitHub',
-        link: 'https://github.com/StreetMesh/Protocol',
-      }
     ],
     // GitHub repository
     repo: 'StreetMesh/Protocol',
