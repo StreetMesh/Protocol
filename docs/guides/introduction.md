@@ -1,8 +1,10 @@
 # Introduction
 
-[StreetMesh](https://github.com/StreetMesh) is an open source framework for spatially organizing the web, building upon open standards and existing protocols. Now, you may be reading that sentence and wondering to yourself, "How did I get here? What are these people talking about? What do they mean, 'spatially'? Why do I care?" These are all wonderful questions. 
+[StreetMesh](https://github.com/StreetMesh) is an open source framework for spatially organizing the web, building upon open standards and existing protocols. Now, you may be reading that sentence and wondering to yourself, "How did I get here? What are these people talking about? What do they mean, 'spatially'? Why do I care?" 
 
-So let's start there.
+These are all wonderful questions. 
+
+Let's start at the beginning.
 
 ## The First Web: Information
 
