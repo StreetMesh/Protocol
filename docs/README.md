@@ -1,10 +1,10 @@
 ---
 home: true
 title: Home
-heroImage: https://avatars.githubusercontent.com/u/206335802?s=400&u=df52d23f1e5fde57616a018ea44593df68293aa9&v=4
+heroImage: images/streetmesh-icon.png
 actions:
-  - text: Get Started
-    link: /get-started.html
+  - text: Start Here
+    link: /guides/introduction
     type: primary
 
   - text: StreetMesh

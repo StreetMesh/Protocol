@@ -1,6 +1,7 @@
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 import { viteBundler } from '@vuepress/bundler-vite'
+import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance'
 
 export default defineUserConfig({
   lang: 'en-US',
@@ -20,10 +21,35 @@ export default defineUserConfig({
             text: 'Introduction',
             link: '/guides/introduction',
           },
+          {
+            text: 'Components',
+            link: '/guides/components',
+          },
         ],
       },
+      {
+        text: 'GitHub',
+        link: 'https://github.com/StreetMesh/Protocol',
+      }
     ],
+    // GitHub repository
+    repo: 'StreetMesh/Protocol',
+
+    // Directory where your docs are located in the repo
+    docsDir: 'docs',
+
+    // Enable "Edit this page" link
+    editLinks: true,
+
+    // Customize the text of the link
+    editLinkText: 'Edit this page on GitHub',
   }),
 
   bundler: viteBundler(),
+
+  plugins: [
+    mdEnhancePlugin({
+      mermaid: true,
+    }),
+  ],
 })

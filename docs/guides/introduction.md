@@ -1,46 +1,56 @@
-# Get Started
+# Introduction
 
-This is a normal page, which contains VuePress basics.
+[StreetMesh](https://github.com/StreetMesh) is an open source framework for spatially organizing the web, building upon open standards and existing protocols.
 
-## Pages
+Now, you may be reading that sentence and wondering to yourself, "How did I get here? What are these people talking about? What do they mean, 'spatially'? Why do I care?" These are all wonderful questions. 
 
-You can add markdown files in your vuepress directory, every markdown file will be converted to a page in your site.
+So let's start there.
 
-See [routing][] for more details.
+## The First Web: Information
 
-## Content
+The [World Wide Web](https://en.wikipedia.org/wiki/World_Wide_Web) was born in 1989, and went public in 1993. A really smart British guy named [Tim Berners-Lee](https://en.wikipedia.org/wiki/Tim_Berners-Lee) invented a bunch of technologies—including HTML, URLs, and HTTP—and gave birth to [web pages](https://en.wikipedia.org/wiki/Web_page): a simple, robust, visual communication toolset that unlocked an unprecedented era of hyper-connection and rapid communication.
 
-Every markdown file [will be rendered to HTML, then converted to a Vue SFC][content].
+![Tim Berners-Lee, creator of the World Wide Web](/images/tim-berners-lee.jpg)
 
-VuePress support basic markdown syntax and [some extensions][synatex-extensions], you can also [use Vue features][vue-feature] in it.
+While Tim Berners-Lee created the first Web browser, it was a company called [Netscape](https://en.wikipedia.org/wiki/Netscape) that moved the Web out of the academic space and into so-called "personal computing." 
 
-## Configuration
+In 1995, in a bid to make the Web and webpages more interactive, Netscape created the scripting language [JavaScript](https://en.wikipedia.org/wiki/JavaScript). Less than one year later, another new technology called [Cascading Style Sheets](https://en.wikipedia.org/wiki/CSS) would create separation between *content* and *layout*, allowing the web to become [beautiful](https://csszengarden.com/) while still being [accessible](https://en.wikipedia.org/wiki/Accessibility).
 
-VuePress use a `.vuepress/config.js`(or .ts) file as [site configuration][config], you can use it to config your site.
+Every webpage on every website that you've ever interacted with, from Amazon.com to Wikipedia, was built upon these base technologies. If you're a web developer, every framework you've ever used—jQuery, Vue, React, Angular, Bootstrap, Tailwind, and so many other tools—was built upon this platform.
 
-For [client side configuration][client-config], you can create `.vuepress/client.js`(or .ts).
+This was Web 1.0. The browser-makers fought [wars](https://en.wikipedia.org/wiki/Browser_wars) over standardization and market dominance, but still, it was a simpler time.
 
-Meanwhile, you can also add configuration per page with [frontmatter][].
+## The Second Web: Participation
 
-## Layouts and customization
+In 1999, [Darcy DiNucci](https://en.wikipedia.org/wiki/Darcy_DiNucci) coined the term "Web 2.0":
 
-Here are common configuration controlling layout of `@vuepress/theme-default`:
+> "The Web we know now, which loads into a browser window in essentially static screenfuls, is only an embryo of the Web to come. The first glimmerings of Web 2.0 are beginning to appear, and we are just starting to see how that embryo might develop. The Web will be understood not as screenfuls of text and graphics but as a transport mechanism, the ether through which interactivity happens. It will [...] appear on your computer screen, [...] on your TV set [...] your car dashboard [...] your cell phone [...] hand-held game machines [...] maybe even your microwave oven."
 
-- [navbar][]
-- [sidebar][]
+Web 2.0 gave birth to the *dot-com startup*, which [bubbled and then burst](https://en.wikipedia.org/wiki/Dot-com_bubble) and unleashed household names we still have today, like Amazon and eBay. That early volatility created a new economic space that today contains enormously valuable companies that serve their customers exclusively through the Web—not only by ecommerce, but also through entire software tools, like Slack, Google Workspace, and Zoom.
 
-Check [default theme docs][default-theme] for full reference.
+This era of the Web is marked by the rise of participation and collaboration, much of which happens in the *social web*, with much of that activity occuring on specially made software called "apps" that run on pocket-sized computers that for some reason we still call "phones." While not like browsers, these "apps" still rely on the same base technologies that powered the first Web.
 
-You can [add extra style][style] with `.vuepress/styles/index.scss` file.
+![People using their cell phones on the train](/images/cell-phones-on-the-train.jpg)
 
-[routing]: https://vuejs.press/guide/page.html#routing
-[content]: https://vuejs.press/guide/page.html#content
-[synatex-extensions]: https://vuejs.press/guide/markdown.html#syntax-extensions
-[vue-feature]: https://vuejs.press/guide/markdown.html#using-vue-in-markdown
-[config]: https://vuejs.press/guide/configuration.html#client-config-file
-[client-config]: https://vuejs.press/guide/configuration.html#client-config-file
-[frontmatter]: https://vuejs.press/guide/page.html#frontmatter
-[navbar]: https://vuejs.press/reference/default-theme/config.html#navbar
-[sidebar]: https://vuejs.press/reference/default-theme/config.html#sidebar
-[default-theme]: https://vuejs.press/reference/default-theme/
-[style]: https://vuejs.press/reference/default-theme/styles.html#style-file
+
+
+
+
+## The Third Web: Decentralization
+
+
+
+## The Next Web: Posthumanization
+
+
+## The Spatial Web
+
+
+
+
+
+
+
+
+
+
