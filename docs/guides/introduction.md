@@ -4,7 +4,7 @@
 
 This project establishes the Protocol Layer for StreetMesh, one that allows people, machines, and spaces to coexist on the Web with the same fluidity and orientation we experience in the physical world. StreetMesh brings spatial reasoning, decentralized identity, and embodied interaction into one coherent system.
 
-StreetMesh is built upon open standards—HTTP, DIDs, OAuth, ATProtocol—and invites developers, designers, educators, and builders to compose digital places that feel present, navigable, and personal.
+StreetMesh is built upon open standards—like HTTP, DIDs, OAuth, ATProtocol—and invites developers, designers, educators, and builders to use familiar tools—like HTML and JavaScript—to compose digital places that feel present, navigable, and personal.
 
 In StreetMesh, a webpage isn't just graphics on a screen. It's a room you can walk through. A dashboard isn't just data. It's a mission control center. A social feed isn't just endless scroll. It's a gathering place you can step into or out of.
 
