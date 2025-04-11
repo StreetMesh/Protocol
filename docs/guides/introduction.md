@@ -1,19 +1,19 @@
 # Introduction
 
-[StreetMesh](https://github.com/StreetMesh) is an open source framework for spatially organizing the Web, building upon open standards and existing protocols. 
+[StreetMesh](https://github.com/StreetMesh) is an open source framework for spatially organizing the Web, building upon open standards, existing protocols and tools, and guided by human-centered design. 
 
-This project establishes the Protocol Layer for StreetMesh, one that allows people, machines, and spaces to coexist on the Web with the same fluidity and orientation we experience in the physical world. StreetMesh brings spatial reasoning, decentralized identity, and embodied interaction into one coherent system.
+This project establishes the **Protocol** for StreetMesh: a set of rules that allow people, machines, and spaces to coexist on the Web with the same fluidity and orientation we experience in the physical world. StreetMesh brings spatial reasoning, decentralized identity, and embodied interaction into one coherent system.
 
-StreetMesh is built upon open standards—like HTTP, DIDs, OAuth, ATProtocol—and invites developers, designers, educators, and builders to use familiar tools—like HTML and JavaScript—to compose digital places that feel present, navigable, and personal.
+StreetMesh is built upon open standards—like HTTP, DIDs, OAuth, and ATProtocol—and invites developers, designers, educators, and builders to use familiar tools—like HTML and JavaScript—to compose digital places that are designed to feel present, navigable, and personal.
 
 In StreetMesh, a webpage isn't just graphics on a screen. It's a room you can walk through. A dashboard isn't just data. It's a mission control center. A social feed isn't just endless scroll. It's a gathering place you can step into or out of.
 
 StreetMesh provides the scaffolding to make a spatial web possible—and to make it feel right:
 	
-* Creating a storefront that feels like a place
-* Teaching inside a dynamic, navigable learning environment
-* Hosting a town hall where everyone can be seen and heard
-* Or building AI companions who show up with personality and purpose
+* Creating a storefront that feels like an inviting destination for customers
+* Teaching eager learners inside a dynamic, navigable learning environment
+* Hosting a town hall where everyone can be seen, heard, and respected
+* Building AI companions who show up with purpose and don't pretend to be human
 
 StreetMesh is the Web, restructured for humans and machines to build a shared world—not just exchange information.
 
@@ -159,7 +159,7 @@ What comes next? Some argue that the next Web is the *Posthuman* Web.
 
 Now, before you recoil at the term—let's clear something up. Posthumanization does not mean the end of humanity. It doesn't mean a world where humans are obsolete, or where cold machines replace warm people. That's dystopian science fiction. In truth, Posthumanization is about collaboration—a new partnership between people and machines, each bringing their strengths to the table.
 
-(In fact, ChatGPT played a strong role in finishing the document you've been reading here.)
+(In fact, [ChatGPT](https://en.wikipedia.org/wiki/ChatGPT) played a strong role in finishing the document you've been reading here.)
 
 Humans are storytellers. Meaning-makers. Pattern-seekers. Machines, especially those powered by artificial intelligence, are phenomenal at absorbing vast datasets, running complex models, and responding instantly. Together, we're starting to create in ways that neither could do alone.
 
@@ -180,9 +180,24 @@ The question is not whether machines will be part of the next web. They already 
 
 The real question is: How will we design that relationship?
 
+### Large Language Models
+
+At a high level, a [Large Language Model](https://en.wikipedia.org/wiki/Large_language_model) or LLM is a kind of AI system trained to understand and generate human language. These models consume vast amounts of text—books, articles, conversations, code—and then learn to predict what words (or symbols) are most likely to come next. It's the same basic skill we humans use when finishing each other's sentences, only scaled up to billions of parameters and entire internets of data.
+
+You can think of an LLM as a kind of linguistic interface—a bridge between human intention and machine execution. And that bridge goes both ways. Need to summarize a legal contract? Translate a poem? Write a database query? Brainstorm marketing copy? Draft a letter to your landlord in the voice of Jane Austen? LLMs can do that. They’re not just tools—they’re collaborators, especially when paired with your own knowledge, goals, and judgment.
+
+LLMs aren’t perfect. They can hallucinate facts, reflect biases from their training data, and speak with confidence even when they're wrong. But here's the key insight for the Posthuman Web: they don’t need to be perfect to be useful. They just need to be interactive, transparent, and trainable. In a Posthuman Web, LLMs show up in powerful new roles:
+
+* As conversational agents—not to impersonate people, but to extend human capacity
+* As tutors, adapting learning content to individual learner's pace and style
+* As teammates, co-authoring content, writing code, or prototyping ideas in real time
+* As interfaces, helping users interact with complex systems using plain language instead of forms
+
+In a Posthuman Web, LLMs become more than chatbots. They become trusted companions, workflow accelerators, and context-aware interpreters of the digital world.
+
 ## The Spatial Web
 
-So how will we design that relationship?
+So, how will we design the relationship between humans, machines, and the information they create?
 
 We'll design it the way humans have always made sense of the world: through space.
 
@@ -225,9 +240,29 @@ Stories to remember.
 
 The Spatial Web is not a dream. It's a direction.
 
+### WebXR
+
+[WebXR](https://en.wikipedia.org/wiki/WebXR) stands for Web Extended Reality—a set of APIs that bring virtual reality (VR) and augmented reality (AR) to the Web browser. No special app stores. No proprietary platforms. Just the open web, extended into three dimensions.
+
+Imagine walking through a digital art gallery, placing a 3D model on your desk for inspection, or attending a virtual classroom that exists not as a video stream, but as a room you can move around in. WebXR makes these kinds of experiences not only possible, but accessible—to anyone with a web browser and a device that supports it.
+
+Want to try it? Check out the Examples page in the [@react-three/xr](https://pmndrs.github.io/xr/docs/getting-started/examples) project. If you have a Meta Quest device, you can use [this link](https://www.oculus.com/open_url/?url=https%3A%2F%2Fpmndrs.github.io%2Fxr%2Fdocs%2Fgetting-started%2Fexamples)() to open the Examples in the web browser on your Quest.
+
+This is what makes WebXR special. Unlike most XR platforms that live behind corporate gates, WebXR is part of the open standards movement. It's built to be interoperable, portable, and linkable—meaning your immersive experience can live at a URL, just like a traditional webpage. It's the Web we know, just deeper.
+
+In the context of the Spatial Web, WebXR plays a crucial role:
+	
+* It enables embodied interaction, letting users move, look, gesture, and even walk through digital content
+* It supports shared spaces, where people (and AI agents) can meet, talk, and collaborate in ways that feel physical—even when remote
+* It makes the Web not just a canvas for displaying data, but a place you can inhabit
+
+WebXR is [still young](https://caniuse.com/webxr). It's [evolving](https://www.w3.org/TR/webxr/). But the promise is big: a truly spatial, interoperable layer for the Web that doesn't depend on walled gardens or proprietary app stores. It brings the kind of interactivity we associate with games or simulations into everyday tools, learning environments, workplaces, and social spaces.
+
 ## Summary
 
-In this introduction, we introduced StreetMesh by exploring how the Web has evolved across three major phases:
+In this introduction, we introduced StreetMesh: an open-source architecture for building a spatial Web. It's a framework for crafting spatial, embodied, and human-centered digital experiences that work with today's Web—and are ready for tomorrow's. 
+
+We explored how the Web has evolved across three major phases:
 
 * **Web 1.0**, the era of information—built on open standards and static pages.
 * **Web 2.0**, the era of participation—powered by social platforms, apps, and targeted experiences.
@@ -235,16 +270,14 @@ In this introduction, we introduced StreetMesh by exploring how the Web has evol
 
 We also began imagining what comes next:
 
-* **Posthumanization**, where people and machines collaborate—not in competition, but in partnership.
-* And the **Spatial Web**, where information isn't just presented but experienced, using space, memory, and presence as organizing principles.
+* A **Posthuman Web**, where people and machines collaborate—not in competition, but in partnership
+* And the **Spatial Web**, where information isn't just presented but experienced, using space, memory, and presence as organizing principles
 
-We reviewed foundational technologies like OAuth, DIDs, and the ATProtocol, each playing a role in this new landscape of decentralized, interoperable identity and communication.
+We reviewed foundational technologies like HTTP, HTML, JavaScript, OAuth, DIDs, ATProtocol, and WebXR, each playing a role in this new landscape of the spatial Web.
 
-StreetMesh is an open-source architecture for building this next web. It's a framework for crafting spatial, embodied, and human-centered digital experiences that work with today's web—and are ready for tomorrow's.
+## Read Next: Design
 
-## Read Next: Architecture
-
-In [Architecture](/guides/architecture), we'll dig into the architecture of StreetMesh: what it's made of and how it's structured.
+In [Design](/guides/design), we'll reorient our thinking away from technology to the experience of a spatial Web.
 
 
 

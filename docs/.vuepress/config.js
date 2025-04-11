@@ -6,8 +6,8 @@ import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance'
 export default defineUserConfig({
   lang: 'en-US',
 
-  title: 'Protocol',
-  description: 'A collection of Guides and APIs that establish the decentralized spatial architecture of StreetMesh',
+  title: 'StreetMesh Protocol',
+  description: 'A collection of Guides and APIs that establish the design and architecture for a spatial Web.',
 
   theme: defaultTheme({
     logo: 'https://avatars.githubusercontent.com/u/206335802?s=400&u=df52d23f1e5fde57616a018ea44593df68293aa9&v=4',
@@ -22,8 +22,20 @@ export default defineUserConfig({
             link: '/guides/introduction',
           },
           {
-            text: 'Architecture',
-            link: '/guides/architecture',
+            text: 'Design',
+            link: '/guides/design',
+          },
+          {
+            text: 'Components',
+            link: '/guides/components',
+          },
+          {
+            text: 'Technology',
+            link: '/guides/technology',
+          },
+          {
+            text: 'Tools',
+            link: '/guides/tools',
           },
         ],
       },
