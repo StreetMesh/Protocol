@@ -12,6 +12,7 @@ export default defineUserConfig({
   theme: defaultTheme({
     logo: 'https://avatars.githubusercontent.com/u/206335802?s=400&u=df52d23f1e5fde57616a018ea44593df68293aa9&v=4',
     darkmode: 'enable', 
+    contributors: false,
     navbar: [
       {
         text: 'Guides',
@@ -50,7 +51,7 @@ export default defineUserConfig({
     editLinks: true,
 
     // Customize the text of the link
-    editLinkText: 'Edit this page on GitHub',
+    editLinkText: 'Suggest changes',
   }),
 
   bundler: viteBundler(),

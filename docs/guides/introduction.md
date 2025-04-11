@@ -1,3 +1,7 @@
+---
+prev: false
+next: /guides/design
+---
 # Introduction
 
 [StreetMesh](https://github.com/StreetMesh) is an open source framework for spatially organizing the Web, building upon open standards, existing protocols and tools, and guided by human-centered design. 
