@@ -208,6 +208,15 @@ console.log("Record keys");
   );
 }
 
+console.log("Content addressing");
+for (const vector of read("encoding/cid.json").vectors) {
+  const digest = createHash("sha256").update(dagCbor(vector.value)).digest();
+  // multibase b, CIDv1 (01), dag-cbor (71), sha2-256 (12), 32 bytes (20)
+  const cid = "b" + base32Lower(Buffer.concat([Buffer.from([0x01, 0x71, 0x12, 0x20]), digest]));
+
+  check(vector.name, cid, vector.cid);
+}
+
 console.log("Key history — which key was current when");
 for (const vector of read("identity/key-history.json").vectors) {
   const history = keyHistory(vector.auditLog, vector.fragment);

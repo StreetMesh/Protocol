@@ -45,6 +45,8 @@ suite: a test suite in one language is an argument for that language.
 | `encoding/multikey.json` | Public keys as multibase multicodec, on all three curves in use |
 | `identity/did-plc.json` | Deriving a `did:plc` from its genesis operation |
 | `identity/key-history.json` | Which key an identity was using at a given moment |
+| `encoding/tid.json` | Record keys, and that sorting them sorts time |
+| `encoding/cid.json` | Content addressing — naming a record by hashing it |
 | `signing/jws.json` | Compact JWS with `alg` EdDSA |
 | `signing/p256.json` | ES256 signatures as raw `r‖s`, not DER |
 | `lexicons/com.streetmesh.games.chess.json` | Record schemas, as they are defined |

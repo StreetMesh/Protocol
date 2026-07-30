@@ -1,0 +1,83 @@
+{
+    "$comment": "Content addressing. A CID names a record by hashing it, so the same record has the same name everywhere and an altered record has a different name than the one anybody cited. Layered so that nothing is agreed out of band: multibase `b` (base32, lower case, unpadded), then CIDv1 (0x01), then the codec dag-cbor (0x71), then the multihash sha2-256 (0x12) with length 32 (0x20), then the digest. `cid` is the CID of `value` encoded as DAG-CBOR — so an implementation that fails these while passing encoding/dag-cbor.json has its hashing or its prefixes wrong rather than its encoder.",
+    "vectors": [
+        {
+            "name": "operation 0 of a live identity",
+            "source": "https://plc.directory/did:plc:z72i7hdynmk6r22z27h6tvur/log/audit",
+            "value": {
+                "sig": "9NuYV7AqwHVTc0YuWzNV3CJafsSZWH7qCxHRUIP2xWlB-YexXC1OaYAnUayiCXLVzRQ8WBXIqF-SvZdNalwcjA",
+                "prev": null,
+                "type": "plc_operation",
+                "services": {
+                    "atproto_pds": {
+                        "type": "AtprotoPersonalDataServer",
+                        "endpoint": "https://bsky.social"
+                    }
+                },
+                "alsoKnownAs": [
+                    "at://bluesky-team.bsky.social"
+                ],
+                "rotationKeys": [
+                    "did:key:zQ3shhCGUqDKjStzuDxPkTxN6ujddP4RkEKJJouJGRRkaLGbg",
+                    "did:key:zQ3shpKnbdPx3g3CmPf5cRVTPe1HtSwVn5ish3wSnDPQCbLJK"
+                ],
+                "verificationMethods": {
+                    "atproto": "did:key:zQ3shXjHeiBuRCKmM36cuYnm7YEMzhGnCmCyW92sRJ9pribSF"
+                }
+            },
+            "cid": "bafyreigp6shzy6dlcxuowwoxz7u5nemdrkad2my5zwzpwilcnhih7bw6zm"
+        },
+        {
+            "name": "operation 1 of a live identity",
+            "source": "https://plc.directory/did:plc:z72i7hdynmk6r22z27h6tvur/log/audit",
+            "value": {
+                "sig": "1mEWzRtFOgeRXH-YCSPTxb990JOXxa__n8Qw6BOKl7Ndm6OFFmwYKiiMqMCpAbxpnGjF5abfIsKc7u3a77Cbnw",
+                "prev": "bafyreigp6shzy6dlcxuowwoxz7u5nemdrkad2my5zwzpwilcnhih7bw6zm",
+                "type": "plc_operation",
+                "services": {
+                    "atproto_pds": {
+                        "type": "AtprotoPersonalDataServer",
+                        "endpoint": "https://bsky.social"
+                    }
+                },
+                "alsoKnownAs": [
+                    "at://bsky.app"
+                ],
+                "rotationKeys": [
+                    "did:key:zQ3shhCGUqDKjStzuDxPkTxN6ujddP4RkEKJJouJGRRkaLGbg",
+                    "did:key:zQ3shpKnbdPx3g3CmPf5cRVTPe1HtSwVn5ish3wSnDPQCbLJK"
+                ],
+                "verificationMethods": {
+                    "atproto": "did:key:zQ3shXjHeiBuRCKmM36cuYnm7YEMzhGnCmCyW92sRJ9pribSF"
+                }
+            },
+            "cid": "bafyreihmuvr3frdvd6vmdhucih277prdcfcezf67lasg5oekxoimnunjoq"
+        },
+        {
+            "name": "operation 2 of a live identity",
+            "source": "https://plc.directory/did:plc:z72i7hdynmk6r22z27h6tvur/log/audit",
+            "value": {
+                "sig": "OoDJihYhLUEWp2MGiAoCN1sRj9cgUEqNjZe6FIOePB8Ugp-IWAZplFRm-pU-fbYSpYV1_tQ9Gx8d_PR9f3NBAg",
+                "prev": "bafyreihmuvr3frdvd6vmdhucih277prdcfcezf67lasg5oekxoimnunjoq",
+                "type": "plc_operation",
+                "services": {
+                    "atproto_pds": {
+                        "type": "AtprotoPersonalDataServer",
+                        "endpoint": "https://bsky.social"
+                    }
+                },
+                "alsoKnownAs": [
+                    "at://bsky.app"
+                ],
+                "rotationKeys": [
+                    "did:key:zQ3shhCGUqDKjStzuDxPkTxN6ujddP4RkEKJJouJGRRkaLGbg",
+                    "did:key:zQ3shpKnbdPx3g3CmPf5cRVTPe1HtSwVn5ish3wSnDPQCbLJK"
+                ],
+                "verificationMethods": {
+                    "atproto": "did:key:zQ3shXjHeiBuRCKmM36cuYnm7YEMzhGnCmCyW92sRJ9pribSF"
+                }
+            },
+            "cid": "bafyreiexwziulimyiw3qlhpwr2zljk5jtzdp2bgqbgoxuemjsf5a6tan3a"
+        }
+    ]
+}
