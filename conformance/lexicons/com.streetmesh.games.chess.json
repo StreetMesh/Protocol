@@ -1,0 +1,83 @@
+{
+  "lexicon": 1,
+  "id": "com.streetmesh.games.chess",
+  "defs": {
+    "main": {
+      "type": "record",
+      "key": "tid",
+      "description": "A game of chess that happened at a venue, held by one of the people who played it. The venue hosted the game and keeps a copy; this is the copy that belongs to the player, on the server they chose. It is written by the player's own server and is therefore signed by them — the venue's assertion about what happened rides inside it as `attestation`, signed by the venue and verifiable long after the venue is gone.",
+      "record": {
+        "type": "object",
+        "required": ["attestation", "venue", "place", "seat", "result", "concludedAt", "createdAt"],
+        "properties": {
+          "attestation": {
+            "type": "string",
+            "description": "The venue's signed statement of what happened, as a compact JWS with `alg` EdDSA. Its `kid` names a verification method in the venue's DID document, so it can be checked with nothing but this string and DNS. Every other field here is a decoded convenience: where they disagree, this wins.",
+            "maxLength": 8192
+          },
+          "venue": {
+            "type": "string",
+            "format": "did",
+            "description": "The venue that hosted the game and signed the attestation."
+          },
+          "venueName": {
+            "type": "string",
+            "description": "What the venue called itself at the time. Kept because a venue may be gone, renamed, or lying later, and the record should still read.",
+            "maxGraphemes": 128
+          },
+          "place": {
+            "type": "string",
+            "format": "uri",
+            "description": "The table this was played at, as an ordinary https URL with the seat as a fragment. Deliberately followable: an address that cannot be clicked is not an address."
+          },
+          "seat": {
+            "type": "string",
+            "enum": ["white", "black"],
+            "description": "Which side the holder of this record played."
+          },
+          "result": {
+            "type": "string",
+            "enum": ["win", "loss", "draw"],
+            "description": "From the point of view of the holder, not of the board."
+          },
+          "reason": {
+            "type": "string",
+            "knownValues": ["checkmate", "resignation", "agreement", "stalemate", "timeout", "abandonment"],
+            "description": "How it ended. Open rather than closed, because a venue may adjudicate in ways this list has not thought of."
+          },
+          "opponent": {
+            "type": "string",
+            "format": "did",
+            "description": "Who was on the other side. Their identity, not their handle, because handles change and this record does not."
+          },
+          "opponentHandle": {
+            "type": "string",
+            "format": "handle",
+            "description": "What the opponent was called at the time, for reading. Not authoritative — resolve `opponent` for that."
+          },
+          "moves": {
+            "type": "array",
+            "items": { "type": "string", "maxLength": 16 },
+            "maxLength": 1024,
+            "description": "The game in algebraic notation, one move per entry."
+          },
+          "pgn": {
+            "type": "string",
+            "description": "The same game as PGN, for anything that already reads chess. May be empty, and an empty string here is a real value rather than an absent one — see the conformance vectors.",
+            "maxLength": 32768
+          },
+          "concludedAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "When the game ended, as the venue recorded it."
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "When this record was written to the holder's own repository, which may be much later than the game if their server was unreachable."
+          }
+        }
+      }
+    }
+  }
+}

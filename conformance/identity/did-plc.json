@@ -1,0 +1,71 @@
+{
+    "$comment": "did:plc derivation. The DID is `did:plc:` followed by the first 24 characters of lowercase base32 (RFC 4648, unpadded) of sha256 of the DAG-CBOR encoding of the signed genesis operation.",
+    "vectors": [
+        {
+            "name": "genesis operation of bsky.app",
+            "source": "https://plc.directory/did:plc:z72i7hdynmk6r22z27h6tvur/log/audit",
+            "operation": {
+                "sig": "9NuYV7AqwHVTc0YuWzNV3CJafsSZWH7qCxHRUIP2xWlB-YexXC1OaYAnUayiCXLVzRQ8WBXIqF-SvZdNalwcjA",
+                "prev": null,
+                "type": "plc_operation",
+                "services": {
+                    "atproto_pds": {
+                        "type": "AtprotoPersonalDataServer",
+                        "endpoint": "https://bsky.social"
+                    }
+                },
+                "alsoKnownAs": [
+                    "at://bluesky-team.bsky.social"
+                ],
+                "rotationKeys": [
+                    "did:key:zQ3shhCGUqDKjStzuDxPkTxN6ujddP4RkEKJJouJGRRkaLGbg",
+                    "did:key:zQ3shpKnbdPx3g3CmPf5cRVTPe1HtSwVn5ish3wSnDPQCbLJK"
+                ],
+                "verificationMethods": {
+                    "atproto": "did:key:zQ3shXjHeiBuRCKmM36cuYnm7YEMzhGnCmCyW92sRJ9pribSF"
+                }
+            },
+            "did": "did:plc:z72i7hdynmk6r22z27h6tvur"
+        },
+        {
+            "name": "genesis operation of atproto.com",
+            "source": "https://plc.directory/did:plc:ewvi7nxzyoun6zhxrhs64oiz/log/audit",
+            "operation": {
+                "sig": "lza4at_jCtGo_TYgL5PC1ZNP7lhF4DV8H50LWHhvdHcB143x1wEwqZ43xvV36Pws6OOnJLJrkibEUFDFqkhIhg",
+                "prev": null,
+                "type": "plc_operation",
+                "services": {
+                    "atproto_pds": {
+                        "type": "AtprotoPersonalDataServer",
+                        "endpoint": "https://bsky.social"
+                    }
+                },
+                "alsoKnownAs": [
+                    "at://atprotocol.bsky.social"
+                ],
+                "rotationKeys": [
+                    "did:key:zQ3shhCGUqDKjStzuDxPkTxN6ujddP4RkEKJJouJGRRkaLGbg",
+                    "did:key:zQ3shpKnbdPx3g3CmPf5cRVTPe1HtSwVn5ish3wSnDPQCbLJK"
+                ],
+                "verificationMethods": {
+                    "atproto": "did:key:zQ3shXjHeiBuRCKmM36cuYnm7YEMzhGnCmCyW92sRJ9pribSF"
+                }
+            },
+            "did": "did:plc:ewvi7nxzyoun6zhxrhs64oiz"
+        },
+        {
+            "name": "genesis operation of jay.bsky.team",
+            "source": "https://plc.directory/did:plc:oky5czdrnfjpqslsw2a5iclo/log/audit",
+            "operation": {
+                "sig": "KuN3A61golVNSDU71wZKLP9lVuXk6YekJAz1lwDzrPsNTEWHBBW_8zSyV6pDxV4KiYXuAXlS1Ik47XkjQZ94mA",
+                "prev": null,
+                "type": "create",
+                "handle": "jay.bsky.social",
+                "service": "https://bsky.social",
+                "signingKey": "did:key:zQ3shP5TBe1sQfSttXty15FAEHV1DZgcxRZNxvEWnPfLFwLxJ",
+                "recoveryKey": "did:key:zQ3shhCGUqDKjStzuDxPkTxN6ujddP4RkEKJJouJGRRkaLGbg"
+            },
+            "did": "did:plc:oky5czdrnfjpqslsw2a5iclo"
+        }
+    ]
+}

@@ -1,0 +1,117 @@
+{
+    "$comment": "DAG-CBOR encoding. `hex` is the encoding of `value`. Map keys sort by length, then bytewise (RFC 7049 canonical), NOT plain lexicographic.",
+    "vectors": [
+        {
+            "name": "null",
+            "value": null,
+            "hex": "f6"
+        },
+        {
+            "name": "true",
+            "value": true,
+            "hex": "f5"
+        },
+        {
+            "name": "false",
+            "value": false,
+            "hex": "f4"
+        },
+        {
+            "name": "zero",
+            "value": 0,
+            "hex": "00"
+        },
+        {
+            "name": "small integer",
+            "value": 23,
+            "hex": "17"
+        },
+        {
+            "name": "integer needing one byte",
+            "value": 24,
+            "hex": "1818"
+        },
+        {
+            "name": "integer needing two bytes",
+            "value": 1000,
+            "hex": "1903e8"
+        },
+        {
+            "name": "integer needing four bytes",
+            "value": 1000000,
+            "hex": "1a000f4240"
+        },
+        {
+            "name": "negative integer",
+            "value": -1,
+            "hex": "20"
+        },
+        {
+            "name": "empty string",
+            "value": "",
+            "hex": "60"
+        },
+        {
+            "name": "ascii string",
+            "value": "streetmesh",
+            "hex": "6a7374726565746d657368"
+        },
+        {
+            "name": "string needing more than one length byte",
+            "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "hex": "79012c616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161"
+        },
+        {
+            "name": "list",
+            "value": [
+                "a",
+                "b",
+                "c"
+            ],
+            "hex": "83616161626163"
+        },
+        {
+            "name": "nested list",
+            "value": [
+                [
+                    "a"
+                ],
+                [
+                    "b"
+                ]
+            ],
+            "hex": "82816161816162"
+        },
+        {
+            "name": "map keys sort by length before bytes",
+            "value": {
+                "verificationMethods": "d",
+                "services": "c",
+                "type": "b",
+                "prev": "a",
+                "sig": "z"
+            },
+            "hex": "a563736967617a6470726576616164747970656162687365727669636573616373766572696669636174696f6e4d6574686f64736164"
+        },
+        {
+            "name": "map with equal-length keys sorts bytewise",
+            "value": {
+                "bbb": 2,
+                "aaa": 1,
+                "ccc": 3
+            },
+            "hex": "a3636161610163626262026363636303"
+        },
+        {
+            "name": "nested map",
+            "value": {
+                "outer": {
+                    "inner": {
+                        "deepest": 1
+                    }
+                }
+            },
+            "hex": "a1656f75746572a165696e6e6572a1676465657065737401"
+        }
+    ]
+}

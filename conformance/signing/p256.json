@@ -1,0 +1,25 @@
+{
+    "$comment": "ES256 over P-256. Signatures are the fixed-width raw r‖s pair (64 bytes), not DER. ECDSA is randomised, so these are verification vectors: check that `signatureHex` verifies against the key for `message`, and that it does not verify for any other message.",
+    "publicKeyMultibase": "zDnaerZEgjQTSNV3QfD2yfxJczeAYKe4Wq7TiFED1fokkeoHb",
+    "publicKeyHex": "03842c9c0c3ab9798895bcdde2a5dec53a19d8f99d04a2bcf68e1cf76154455612",
+    "vectors": [
+        {
+            "name": "message 0 (0 bytes)",
+            "message": "",
+            "signatureHex": "5fd1bea99c6602f9a342cfd2ade62ecea601ab7cf80706411d11008a97bcc016a50111ef065267f484f42e736f299e47f58f1fb57d857de181e6eca51a124cea",
+            "verifies": true
+        },
+        {
+            "name": "message 1 (10 bytes)",
+            "message": "streetmesh",
+            "signatureHex": "6f44521c9f5aa0785516dc2fbe636bcb342eb1030efe63eac12d77c89fbbe04c91ab4428d33aad1451e1e89ddb40be418e364b6847204a20ac72a0fd6eb8a318",
+            "verifies": true
+        },
+        {
+            "name": "message 2 (1000 bytes)",
+            "message": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "signatureHex": "951dd9efecf0698cd52eb441718a375c09034e77dd4e82be2f118b8b3e07d0687046a74420da6beeadce939a129243e0c5c1418dfdd4976accde577919e95180",
+            "verifies": true
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "$comment": "Multibase-encoded multicodec public keys. `multikey` is base58btc over the codec prefix and the raw key. Prefixes: ed25519 ed01, secp256k1 e701, p256 8024.",
+    "vectors": [
+        {
+            "name": "ed25519",
+            "curve": "ed25519",
+            "publicKeyHex": "19a5a92d8cb2baaec2dee38037d924ae9ea1d9e8ac6f874d8591d232700e4931",
+            "multikey": "z6MkgBNkQdWHQAADPDunLKnzbiRt2xUCc6nSAbbm16Vghv2L"
+        },
+        {
+            "name": "p256 compressed point",
+            "curve": "p256",
+            "publicKeyHex": "03842c9c0c3ab9798895bcdde2a5dec53a19d8f99d04a2bcf68e1cf76154455612",
+            "multikey": "zDnaerZEgjQTSNV3QfD2yfxJczeAYKe4Wq7TiFED1fokkeoHb"
+        },
+        {
+            "name": "secp256k1 as published by a live ATProto identity",
+            "curve": "secp256k1",
+            "publicKeyHex": "023249d921a1da482dc7117e9451bf2ae48ef641dc87bd9c9ea3648f3e81cce249",
+            "multikey": "zQ3shQo6TF2moaqMTrUZEM1jeuYRQXeHEx4evX9751y2qPqRA"
+        },
+        {
+            "name": "leading zero byte survives base58btc",
+            "curve": "ed25519",
+            "publicKeyHex": "0000000000000000000000000000000000000000000000000000000000000000",
+            "multikey": "z6MkeTG3bFFSLYVU7VqhgZxqr6YzpaGrQtFMh1uvqGy1vDnP"
+        }
+    ]
+}

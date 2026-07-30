@@ -1,0 +1,23 @@
+{
+    "$comment": "Compact JWS, alg EdDSA. The signature covers the ASCII of `<protected>.<payload>`. Ed25519 is deterministic, so `compact` is an exact expected output. An implementation that normalises the empty string in `detail.pgn` will fail to reproduce it, which is the point of its being here.",
+    "publicKeyMultibase": "z6MkgBNkQdWHQAADPDunLKnzbiRt2xUCc6nSAbbm16Vghv2L",
+    "secretKeyBase64": "ERD7AkytmBQ6AV1Urvwj6nrF8U39Ik9O0ZBZymfZ6fcZpaktjLK6rsLe44A32SSunqHZ6Kxvh02FkdIycA5JMQ==",
+    "keyId": "did:web:venue.test#streetmesh",
+    "vectors": [
+        {
+            "name": "record carrying a blank field",
+            "claims": {
+                "type": "com.streetmesh.games.chess",
+                "venue": "venue.test",
+                "subject": "did:plc:z72i7hdynmk6r22z27h6tvur",
+                "seat": "white",
+                "result": "win",
+                "detail": {
+                    "pgn": "",
+                    "moves": []
+                }
+            },
+            "compact": "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6dmVudWUudGVzdCNzdHJlZXRtZXNoIn0.eyJ0eXBlIjoiY29tLnN0cmVldG1lc2guZ2FtZXMuY2hlc3MiLCJ2ZW51ZSI6InZlbnVlLnRlc3QiLCJzdWJqZWN0IjoiZGlkOnBsYzp6NzJpN2hkeW5tazZyMjJ6MjdoNnR2dXIiLCJzZWF0Ijoid2hpdGUiLCJyZXN1bHQiOiJ3aW4iLCJkZXRhaWwiOnsicGduIjoiIiwibW92ZXMiOltdfX0.3Cz76HhEKp51QYRH8wVqnyKE6cxQpfihuPttTtrgoMCUuDPky7INEr7Fwg0lktcKnnjeQMdxUPPmJF5asu1GBg"
+        }
+    ]
+}
