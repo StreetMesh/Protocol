@@ -175,6 +175,39 @@ for (const vector of read("identity/did-plc.json").vectors) {
   check(vector.name, "did:plc:" + base32Lower(hash).slice(0, 24), vector.did);
 }
 
+console.log("Record keys");
+{
+  const suite = read("encoding/tid.json");
+  const ALPHABET = suite.alphabet;
+
+  const decode = (tid) => {
+    let n = 0n;
+    for (const c of tid) n = (n << 5n) | BigInt(ALPHABET.indexOf(c));
+    return { microseconds: Number(n >> 10n), clockId: Number(n & 1023n) };
+  };
+
+  const encode = (microseconds, clockId) => {
+    const n = (BigInt(microseconds) << 10n) | BigInt(clockId);
+    let out = "";
+    for (let shift = 60n; shift >= 0n; shift -= 5n) out += ALPHABET[Number((n >> shift) & 31n)];
+    return out;
+  };
+
+  for (const vector of suite.vectors) {
+    const { microseconds, clockId } = decode(vector.tid);
+    check(`${vector.name} — microseconds`, microseconds, vector.microseconds);
+    check(`${vector.name} — clock id`, clockId, vector.clockId);
+    check(`${vector.name} — re-encodes`, encode(microseconds, clockId), vector.tid);
+  }
+
+  // The whole purpose of the alphabet: sorting text sorts time.
+  check(
+    "lexical order is chronological order",
+    JSON.stringify([...suite.ordering.unsorted].sort()),
+    JSON.stringify(suite.ordering.sorted),
+  );
+}
+
 console.log("Key history — which key was current when");
 for (const vector of read("identity/key-history.json").vectors) {
   const history = keyHistory(vector.auditLog, vector.fragment);

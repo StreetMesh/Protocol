@@ -1,0 +1,53 @@
+{
+    "$comment": "Record keys. 64 bits written in 13 characters of a base32 alphabet ordered so that sorting the text sorts the times: bit 63 is zero, bits 62-10 are microseconds since the UNIX epoch, bits 9-0 are a per-writer clock identifier. The alphabet is '234567abcdefghijklmnopqrstuvwxyz' and is NOT RFC 4648's. Lexical order must equal chronological order, which is the entire purpose of the format. Two things observed in live keys that are implementation choices rather than format rules, and which will otherwise look like a broken decoder: microsecond values ending in 000, because a writer with a millisecond clock multiplies up; and small clock identifiers, because the field allows 1024 values and implementations may draw from fewer.",
+    "alphabet": "234567abcdefghijklmnopqrstuvwxyz",
+    "vectors": [
+        {
+            "name": "a live record key, decoded to the moment it was minted",
+            "source": "app.bsky.feed.post in did:plc:z72i7hdynmk6r22z27h6tvur",
+            "tid": "3mqcp5qjdfs26",
+            "microseconds": 1783705410971000,
+            "clockId": 4,
+            "recordCreatedAt": "2026-07-10T17:43:30.972Z"
+        },
+        {
+            "name": "another, from the same repository",
+            "source": "app.bsky.feed.post in did:plc:z72i7hdynmk6r22z27h6tvur",
+            "tid": "3mqafridzgk2e",
+            "microseconds": 1783626616602000,
+            "clockId": 10,
+            "recordCreatedAt": "2026-07-09T19:50:16.599Z"
+        },
+        {
+            "name": "an older one",
+            "source": "app.bsky.feed.post in did:plc:z72i7hdynmk6r22z27h6tvur",
+            "tid": "3mpok7nkjtc2o",
+            "microseconds": 1783012911497000,
+            "clockId": 20,
+            "recordCreatedAt": "2026-07-02T17:21:51.498Z"
+        },
+        {
+            "name": "and one from the same day",
+            "source": "app.bsky.feed.post in did:plc:z72i7hdynmk6r22z27h6tvur",
+            "tid": "3mpohxl64mk2z",
+            "microseconds": 1783010493074000,
+            "clockId": 31,
+            "recordCreatedAt": "2026-07-02T16:41:33.075Z"
+        }
+    ],
+    "ordering": {
+        "$comment": "Sorting these as plain strings must produce the same sequence as sorting them by decoded time. An implementation using a different alphabet may decode correctly and still fail this, which is why it is checked separately.",
+        "unsorted": [
+            "3mqcp5qjdfs26",
+            "3mpohxl64mk2z",
+            "3mqafridzgk2e",
+            "3mpok7nkjtc2o"
+        ],
+        "sorted": [
+            "3mpohxl64mk2z",
+            "3mpok7nkjtc2o",
+            "3mqafridzgk2e",
+            "3mqcp5qjdfs26"
+        ]
+    }
+}
