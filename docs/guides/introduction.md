@@ -55,6 +55,10 @@ The social web is a [grand experiment](https://www.youtube.com/watch?v=_fZwusCcT
 
 And so this is Web 2.0, still alive today. The whole world got online, created new ways of exchanging goods and services, subjected our minds and our societies to systemic forces we are still working to understand, and gave rise to a new class: the tech-billionare-enterpreneur.
 
+### Responsive Design
+
+
+
 ## The Third Web: Decentralization
 
 Web 1.0 was a *vision* for a world of information that was interlinked and could be explored by both humans and machines. That vision continues today, even as the landscape has evolved dramatically.
@@ -261,6 +265,10 @@ In the context of the Spatial Web, WebXR plays a crucial role:
 * It makes the Web not just a canvas for displaying data, but a place you can inhabit
 
 WebXR is [still young](https://caniuse.com/webxr). It's [evolving](https://www.w3.org/TR/webxr/). But the promise is big: a truly spatial, interoperable layer for the Web that doesn't depend on walled gardens or proprietary app stores. It brings the kind of interactivity we associate with games or simulations into everyday tools, learning environments, workplaces, and social spaces.
+
+### glTF
+
+
 
 ## Summary
 
