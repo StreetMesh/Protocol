@@ -1,5 +1,5 @@
 {
-    "$comment": "Compact JWS, alg EdDSA. The signature covers the ASCII of `<protected>.<payload>`. Ed25519 is deterministic, so `compact` is an exact expected output. An implementation that normalises the empty string in `detail.pgn` will fail to reproduce it, which is the point of its being here.",
+    "$comment": "Compact JWS, alg EdDSA. The signature covers the ASCII of `<protected>.<payload>`. Ed25519 is deterministic, so `compact` is an exact expected output. An implementation that normalizes the empty string in `detail.pgn` will fail to reproduce it, which is the point of its being here.",
     "publicKeyMultibase": "z6MkgBNkQdWHQAADPDunLKnzbiRt2xUCc6nSAbbm16Vghv2L",
     "secretKeyBase64": "ERD7AkytmBQ6AV1Urvwj6nrF8U39Ik9O0ZBZymfZ6fcZpaktjLK6rsLe44A32SSunqHZ6Kxvh02FkdIycA5JMQ==",
     "keyId": "did:web:venue.test#streetmesh",

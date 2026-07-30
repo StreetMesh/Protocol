@@ -11,7 +11,7 @@ node runners/verify.mjs
 ## Why these exist
 
 StreetMesh spent two days failing to deliver records between two servers that
-both believed they were right. The key was correct, the canonicalisation was
+both believed they were right. The key was correct, the canonicalization was
 correct, and games settled or did not depending on whether they happened to
 contain an empty string. It was found by measuring, not by arguing, and it would
 have been found in seconds by a vector.
@@ -64,7 +64,7 @@ most CBOR libraries default to. Backwards, and every DID you compute is wrong in
 a way that presents as a signature problem.
 
 **A signed document is verified exactly as received.** No trimming, no
-null-coercion, no re-ordering, no re-serialisation. `signing/jws.json` contains a
+null-coercion, no re-ordering, no re-serialization. `signing/jws.json` contains a
 record whose `detail.pgn` is an empty string precisely so that an implementation
 which tidies its input cannot pass. Web frameworks do this by default; ours did.
 
