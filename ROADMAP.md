@@ -22,7 +22,7 @@ run.
 | `Laravel-Domicile` | | Resident-facing UI: dashboard, activity feed, data browser. |
 | `Laravel-Venue` | | Visitor-facing UI, venue-anchored chat, the experience menu, realtime authorization. |
 | `Laravel-Chess` | | The chess experience. |
-| *(realtime base)* | | npm. Generic Colyseus host: rooms, ticket verification, peer media. Only the room rules are per-experience. |
+| `Hub` | | npm. The authoritative multiplayer host, on Colyseus: rooms, ticket verification, peer media. Only the room rules are per-experience. Named in the original plan; this is that. |
 | [`Server`](https://github.com/StreetMesh/Server) | Where do I start if I want to run a StreetMesh server — domicile, venue, or both? | Stock Laravel with the packages wired and nothing else. |
 | `Home` | What can a dedicated domicile look like? | A worked example, and the one that actually runs. |
 | `Games` | What can a dedicated venue look like? | The same, for the other capability. |
@@ -49,8 +49,8 @@ Each step is finished when the one after it can rely on it without qualification
    together as the thinnest possible packages and settle who owns the apex, the
    dashboard, the layout and the navigation — **before** either has features.
    This is the likeliest source of pain in the plan.
-6. **Venue substrate and the realtime base.** The experience menu, realtime
-   authorization, and the npm package every experience depends on.
+6. **Venue substrate and `Hub`.** The experience menu, realtime authorization,
+   and the multiplayer host every experience depends on.
 7. **`Laravel-Chess`, `Home`, `Games`.** The experience, and the two servers that
    prove the whole stack by running it.
 

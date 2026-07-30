@@ -32,7 +32,7 @@ families are named differently, and it is worth preserving.
 | **Domicile** | `StreetMesh/Laravel-Domicile` | | Resident-facing UI: dashboard, activity feed, data browser, messaging. |
 | **Venue** | `StreetMesh/Laravel-Venue` | | Visitor-facing UI, venue-anchored chat, the experience menu, Colyseus authorization. |
 | **Chess** | `StreetMesh/Laravel-Chess` | | The chess experience. |
-| **realtime** | an npm package | | The generic Colyseus base: room hosting, ticket verification, and peer media. Every experience needs it; only the room rules are per-experience. |
+| **Hub** | an npm package | | The authoritative multiplayer host, on Colyseus: room hosting, ticket verification, and peer media. Every experience needs it; only the room rules are per-experience. |
 | **Server** | `StreetMesh/Server` | — | *Where do I start if I want to run a StreetMesh server — domicile, venue, or both?* A stock Laravel application with the packages wired and nothing else. |
 | **Home** | `StreetMesh/Home` | — | *What can a dedicated domicile look like?* A worked example, and the one that actually runs. |
 | **Games** | `StreetMesh/Games` | — | *What can a dedicated venue look like?* The same, for the other capability. |
@@ -338,7 +338,7 @@ deployment would need shared storage — **currently unproven**).
 | `TableTicketController`, `TableSignalController`, `Mailbox` | Venue | Works |
 | `Media\*` (`PeerMedia`, `LiveKitMedia`, `MediaManager`) | Venue | Unproven — `CEILING`/`limit`/`relayed` are advertised and enforced nowhere |
 | `rooms/ChessRoom.ts`, `schema/ChessState.ts` | Chess | Works |
-| `auth/ticket.ts`, `identity.ts`, `config.ts`, `host.ts` | a generic npm package, not Chess | Works |
+| `auth/ticket.ts`, `identity.ts`, `config.ts`, `host.ts` | `Hub`, not Chess | Works |
 
 **Note on the realtime split:** `Laravel-Venue-Chess` carrying "the Colyseus
 game server" means the *chess room* only. Ticket verification, identity and
