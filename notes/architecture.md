@@ -1,14 +1,44 @@
-# Architecture
+# Architecture — working notes
 
-**Historical.** Written while the first implementation was being built, and kept
-because the decisions still hold and the rejected framings still deserve to stay
-rejected. Where it refers to a codebase, it means that first implementation.
+> **Unreviewed.** Produced in a single design conversation on 2026-07-27, before
+> the author's earlier writing on StreetMesh had been read into it, and before
+> anything below had been built. Its own original status line read: *"Decisions
+> here are provisional and pre-spec. Nothing below is implemented."* That is
+> still true of most of it. Nothing here has the standing of the specification,
+> the conformance vectors, or the documents in [`decisions/`](../decisions).
+>
+> Kept because the research in §5 is specific and checkable, and because D10–D12
+> turned out to be right. Filed here rather than there so that neither a person
+> nor a model mistakes a proposal for a settled question.
 
-**Status:** Working notes from a design conversation. Decisions here are provisional
-and pre-spec. Nothing below is implemented.
-**Date:** 2026-07-27
-**Purpose:** Context handoff for coding agents. Read the Constraints section before
-proposing any client-side implementation.
+## Where this stands, as of 2026-07-30
+
+Three of its decisions were subsequently built and hold:
+
+- **D10 — the venue hosts; the participants own the record.** Implemented, and
+  the load-bearing idea of the whole project.
+- **D11 — addresses name places and objects.** Implemented as ordinary `https`
+  URLs with the spot as a fragment.
+- **D12 — one primitive for state and settlement.** Holds, and the commerce
+  reading of it holds too.
+
+Two need reconciling against what has since been decided:
+
+- **D5 — WebTransport.** The realtime half was built on WebSocket, which D5
+  permits as a fallback but does not treat as the target. The claim about Safari
+  baseline availability has not been verified since it was written.
+- **§1's "existing prior art"** describes a `StoryEngine` package that has since
+  been unmounted and deferred. Read it as history, not as a dependency.
+
+Everything else — D1 through D9, the client, presentation profiles, avatars,
+Unity versus three.js — **predates every decision this project has actually
+made, and has never met an implementation.** It is the least tested material
+here and reads as the most confident, which is the combination worth being
+careful about.
+
+**Purpose:** context for anyone thinking about the client and presentation
+layer. Read §5 before proposing a client-side implementation; the constraints
+there are specific and were researched.
 
 ---
 

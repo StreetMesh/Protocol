@@ -10,9 +10,13 @@ surprising.
 
 | | |
 |---|---|
-| [`architecture.md`](architecture.md) | Twelve numbered decisions about the system as a whole, the framings that were rejected, and the constraints everything else has to live within |
 | [`identity.md`](identity.md) | Why identity is `did:plc`, why records are JWS, who signs what, and what each of those costs |
 | [`wire-surface.md`](wire-surface.md) | What actually crossed the wire in the first working implementation, measured rather than remembered, and which parts of it were accidents |
+
+Not everything written down is a decision. Material that was thought out loud
+but never reconciled against the rest of the project lives in
+[`notes/`](../notes) instead, because the distinction is easy to lose and
+expensive to lose.
 
 ## How to read them
 
