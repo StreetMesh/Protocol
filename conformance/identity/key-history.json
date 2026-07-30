@@ -1,0 +1,160 @@
+{
+    "$comment": "Which key an identity was using at a given moment, from its audit log. `history` is the sequence of keys with the instant each became current and the instant it stopped; a period is bounded by [from, until). Operations that do not change the key do not start a new period, and nullified operations are ignored entirely. A query at a time before the identity existed has no answer and must be refused rather than guessed.",
+    "vectors": [
+        {
+            "name": "an identity that rotated its signing key",
+            "source": "https://plc.directory/did:plc:z72i7hdynmk6r22z27h6tvur/log/audit",
+            "did": "did:plc:z72i7hdynmk6r22z27h6tvur",
+            "auditLog": [
+                {
+                    "did": "did:plc:z72i7hdynmk6r22z27h6tvur",
+                    "operation": {
+                        "sig": "9NuYV7AqwHVTc0YuWzNV3CJafsSZWH7qCxHRUIP2xWlB-YexXC1OaYAnUayiCXLVzRQ8WBXIqF-SvZdNalwcjA",
+                        "prev": null,
+                        "type": "plc_operation",
+                        "services": {
+                            "atproto_pds": {
+                                "type": "AtprotoPersonalDataServer",
+                                "endpoint": "https://bsky.social"
+                            }
+                        },
+                        "alsoKnownAs": [
+                            "at://bluesky-team.bsky.social"
+                        ],
+                        "rotationKeys": [
+                            "did:key:zQ3shhCGUqDKjStzuDxPkTxN6ujddP4RkEKJJouJGRRkaLGbg",
+                            "did:key:zQ3shpKnbdPx3g3CmPf5cRVTPe1HtSwVn5ish3wSnDPQCbLJK"
+                        ],
+                        "verificationMethods": {
+                            "atproto": "did:key:zQ3shXjHeiBuRCKmM36cuYnm7YEMzhGnCmCyW92sRJ9pribSF"
+                        }
+                    },
+                    "cid": "bafyreigp6shzy6dlcxuowwoxz7u5nemdrkad2my5zwzpwilcnhih7bw6zm",
+                    "nullified": false,
+                    "createdAt": "2023-04-12T04:53:57.057Z"
+                },
+                {
+                    "did": "did:plc:z72i7hdynmk6r22z27h6tvur",
+                    "operation": {
+                        "sig": "1mEWzRtFOgeRXH-YCSPTxb990JOXxa__n8Qw6BOKl7Ndm6OFFmwYKiiMqMCpAbxpnGjF5abfIsKc7u3a77Cbnw",
+                        "prev": "bafyreigp6shzy6dlcxuowwoxz7u5nemdrkad2my5zwzpwilcnhih7bw6zm",
+                        "type": "plc_operation",
+                        "services": {
+                            "atproto_pds": {
+                                "type": "AtprotoPersonalDataServer",
+                                "endpoint": "https://bsky.social"
+                            }
+                        },
+                        "alsoKnownAs": [
+                            "at://bsky.app"
+                        ],
+                        "rotationKeys": [
+                            "did:key:zQ3shhCGUqDKjStzuDxPkTxN6ujddP4RkEKJJouJGRRkaLGbg",
+                            "did:key:zQ3shpKnbdPx3g3CmPf5cRVTPe1HtSwVn5ish3wSnDPQCbLJK"
+                        ],
+                        "verificationMethods": {
+                            "atproto": "did:key:zQ3shXjHeiBuRCKmM36cuYnm7YEMzhGnCmCyW92sRJ9pribSF"
+                        }
+                    },
+                    "cid": "bafyreihmuvr3frdvd6vmdhucih277prdcfcezf67lasg5oekxoimnunjoq",
+                    "nullified": false,
+                    "createdAt": "2023-04-12T17:26:46.468Z"
+                },
+                {
+                    "did": "did:plc:z72i7hdynmk6r22z27h6tvur",
+                    "operation": {
+                        "sig": "OoDJihYhLUEWp2MGiAoCN1sRj9cgUEqNjZe6FIOePB8Ugp-IWAZplFRm-pU-fbYSpYV1_tQ9Gx8d_PR9f3NBAg",
+                        "prev": "bafyreihmuvr3frdvd6vmdhucih277prdcfcezf67lasg5oekxoimnunjoq",
+                        "type": "plc_operation",
+                        "services": {
+                            "atproto_pds": {
+                                "type": "AtprotoPersonalDataServer",
+                                "endpoint": "https://bsky.social"
+                            }
+                        },
+                        "alsoKnownAs": [
+                            "at://bsky.app"
+                        ],
+                        "rotationKeys": [
+                            "did:key:zQ3shhCGUqDKjStzuDxPkTxN6ujddP4RkEKJJouJGRRkaLGbg",
+                            "did:key:zQ3shpKnbdPx3g3CmPf5cRVTPe1HtSwVn5ish3wSnDPQCbLJK"
+                        ],
+                        "verificationMethods": {
+                            "atproto": "did:key:zQ3shXjHeiBuRCKmM36cuYnm7YEMzhGnCmCyW92sRJ9pribSF"
+                        }
+                    },
+                    "cid": "bafyreiexwziulimyiw3qlhpwr2zljk5jtzdp2bgqbgoxuemjsf5a6tan3a",
+                    "nullified": false,
+                    "createdAt": "2023-06-01T20:05:52.008Z"
+                },
+                {
+                    "did": "did:plc:z72i7hdynmk6r22z27h6tvur",
+                    "operation": {
+                        "sig": "8Wj9Cf74dZFNKx7oucZSHbBDFOMJ3xx9lkvj5rT9xMErssWYl1D9n4PeGC0mNml7xDG7uoQqZ1JWoApGADUgXg",
+                        "prev": "bafyreiexwziulimyiw3qlhpwr2zljk5jtzdp2bgqbgoxuemjsf5a6tan3a",
+                        "type": "plc_operation",
+                        "services": {
+                            "atproto_pds": {
+                                "type": "AtprotoPersonalDataServer",
+                                "endpoint": "https://puffball.us-east.host.bsky.network"
+                            }
+                        },
+                        "alsoKnownAs": [
+                            "at://bsky.app"
+                        ],
+                        "rotationKeys": [
+                            "did:key:zQ3shhCGUqDKjStzuDxPkTxN6ujddP4RkEKJJouJGRRkaLGbg",
+                            "did:key:zQ3shpKnbdPx3g3CmPf5cRVTPe1HtSwVn5ish3wSnDPQCbLJK"
+                        ],
+                        "verificationMethods": {
+                            "atproto": "did:key:zQ3shQo6TF2moaqMTrUZEM1jeuYRQXeHEx4evX9751y2qPqRA"
+                        }
+                    },
+                    "cid": "bafyreifn4pkect7nymne3sxkdg7tn7534msyxcjkshmzqtijmn3enyxm3q",
+                    "nullified": false,
+                    "createdAt": "2023-11-09T21:49:10.793Z"
+                }
+            ],
+            "fragment": "atproto",
+            "history": [
+                {
+                    "key": "zQ3shXjHeiBuRCKmM36cuYnm7YEMzhGnCmCyW92sRJ9pribSF",
+                    "from": "2023-04-12T04:53:57.057Z",
+                    "until": "2023-11-09T21:49:10.793Z"
+                },
+                {
+                    "key": "zQ3shQo6TF2moaqMTrUZEM1jeuYRQXeHEx4evX9751y2qPqRA",
+                    "from": "2023-11-09T21:49:10.793Z",
+                    "until": null
+                }
+            ],
+            "queries": [
+                {
+                    "name": "the moment the identity was created",
+                    "at": "2023-04-12T04:53:57.057Z",
+                    "key": "zQ3shXjHeiBuRCKmM36cuYnm7YEMzhGnCmCyW92sRJ9pribSF"
+                },
+                {
+                    "name": "midway through the first key",
+                    "at": "2023-06-01T00:00:00.000Z",
+                    "key": "zQ3shXjHeiBuRCKmM36cuYnm7YEMzhGnCmCyW92sRJ9pribSF"
+                },
+                {
+                    "name": "the instant of the rotation belongs to the new key",
+                    "at": "2023-11-09T21:49:10.793Z",
+                    "key": "zQ3shQo6TF2moaqMTrUZEM1jeuYRQXeHEx4evX9751y2qPqRA"
+                },
+                {
+                    "name": "now, which is the only answer a DID document gives",
+                    "at": "2099-01-01T00:00:00.000Z",
+                    "key": "zQ3shQo6TF2moaqMTrUZEM1jeuYRQXeHEx4evX9751y2qPqRA"
+                },
+                {
+                    "name": "before the identity existed",
+                    "at": "2020-01-01T00:00:00.000Z",
+                    "key": null
+                }
+            ]
+        }
+    ]
+}

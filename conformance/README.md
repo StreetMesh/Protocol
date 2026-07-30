@@ -44,6 +44,7 @@ suite: a test suite in one language is an argument for that language.
 | `encoding/dag-cbor.json` | Deterministic CBOR, including the map key ordering that determines every `did:plc` |
 | `encoding/multikey.json` | Public keys as multibase multicodec, on all three curves in use |
 | `identity/did-plc.json` | Deriving a `did:plc` from its genesis operation |
+| `identity/key-history.json` | Which key an identity was using at a given moment |
 | `signing/jws.json` | Compact JWS with `alg` EdDSA |
 | `signing/p256.json` | ES256 signatures as raw `r‖s`, not DER |
 | `lexicons/com.streetmesh.games.chess.json` | Record schemas, as they are defined |
@@ -71,6 +72,45 @@ by one language's habits.
 
 If the runner and the vectors ever disagree, at least one is wrong and neither
 gets the benefit of the doubt.
+
+## Verifying something older than the key that is published now
+
+A DID document publishes the key that is current. That is the wrong question to
+ask of a signature made earlier, and asking it is a silent way to lose history.
+
+Keys are rotated — after a compromise, on moving to another server, or as
+ordinary hygiene. A signature checked against today's key fails for a document
+that was perfectly good when it was made, and the failure looks identical to
+forgery. This is not hypothetical: identities on the live network have rotated,
+and nothing they signed beforehand verifies against what their document
+publishes today.
+
+**So a verifier resolves the key that was current when the document was signed,
+not the key that is current now.** `did:plc` makes this answerable because its
+audit log is retained and timestamped; `did:web` cannot answer it at all, since
+it publishes a document and no history.
+
+Two rules, both pinned by `identity/key-history.json`:
+
+- A period runs `[from, until)`. The instant of a rotation belongs to the new
+  key.
+- Outside an identity's lifetime there is no answer, and an implementation must
+  refuse rather than fall back to the earliest key. Falling back would validate
+  anything backdated to before the identity existed.
+
+### Choosing the moment
+
+Which moment to resolve against is a decision with security consequences, and
+implementations should make it deliberately.
+
+A timestamp inside the signed document is asserted by whoever signed it. It says
+when they *claim* to have signed, which is sufficient against ordinary rotation
+and worth nothing against somebody holding a retired key — they can simply
+backdate. An anchor asserted by the receiving party at the moment of receipt is
+much stronger, because the signer does not control it.
+
+This is an argument for recording when a document arrived rather than trusting
+when it says it was issued.
 
 ## The two rules most often got wrong
 

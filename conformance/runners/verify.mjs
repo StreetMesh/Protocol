@@ -175,6 +175,21 @@ for (const vector of read("identity/did-plc.json").vectors) {
   check(vector.name, "did:plc:" + base32Lower(hash).slice(0, 24), vector.did);
 }
 
+console.log("Key history — which key was current when");
+for (const vector of read("identity/key-history.json").vectors) {
+  const history = keyHistory(vector.auditLog, vector.fragment);
+
+  check(
+    `${vector.name} — periods`,
+    JSON.stringify(history),
+    JSON.stringify(vector.history),
+  );
+
+  for (const query of vector.queries) {
+    check(`  at ${query.at}`, keyAt(history, query.at), query.key);
+  }
+}
+
 console.log("JWS, verified with OpenSSL rather than libsodium");
 {
   const suite = read("signing/jws.json");
@@ -222,6 +237,51 @@ console.log("ES256 over P-256");
       false,
     );
   }
+}
+
+// ── Key history ─────────────────────────────────────────────────────────────
+//
+// A DID document publishes the key that is current now, which is the wrong
+// question to ask of a signature made earlier. The audit log answers the right
+// one.
+
+function keyHistory(auditLog, fragment) {
+  const rotations = [];
+
+  for (const entry of auditLog) {
+    // Nullified operations were undone by a recovery and are not history.
+    if (entry.nullified) continue;
+
+    let key = entry.operation?.verificationMethods?.[fragment];
+    if (typeof key !== "string") continue;
+
+    key = key.startsWith("did:key:") ? key.slice("did:key:".length) : key;
+
+    // An operation that leaves the key alone is not a rotation.
+    if (rotations.length && rotations.at(-1).key === key) continue;
+
+    rotations.push({ key, at: entry.createdAt ?? "" });
+  }
+
+  return rotations.map((rotation, index) => ({
+    key: rotation.key,
+    from: rotation.at,
+    until: rotations[index + 1]?.at ?? null,
+  }));
+}
+
+/** Bounded [from, until), and null outside the identity's lifetime. */
+function keyAt(history, at) {
+  const moment = Date.parse(at);
+
+  for (const period of history) {
+    const from = Date.parse(period.from);
+    const until = period.until === null ? Infinity : Date.parse(period.until);
+
+    if (moment >= from && moment < until) return period.key;
+  }
+
+  return null;
 }
 
 // ── Helpers that needed the above ───────────────────────────────────────────
