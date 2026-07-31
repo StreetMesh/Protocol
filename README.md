@@ -6,7 +6,22 @@
 
 > With just a few constraints, imagination finds its wings—structure does not confine creativity, it sets it free. — Unknown
 
-You can browse the Protcol [here](https://protocol.streetmesh.com).
+You can browse the Protocol [here](https://protocol.streetmesh.com).
+
+## What is in here
+
+| | |
+|---|---|
+| [`GLOSSARY.md`](GLOSSARY.md) | Every term, in plain language, and whether it is ours or borrowed. **Start here** if anything below reads as jargon. |
+| [`ROADMAP.md`](ROADMAP.md) | What v0 is, which repositories deliver it, and what is deliberately deferred |
+| [`conformance/`](conformance) | Executable vectors. The arbiter — a claim about the wire that is not in here is an opinion |
+| [`decisions/`](decisions) | Why StreetMesh is shaped as it is: what was decided, what it was decided instead of, and what settled it |
+| [`notes/`](notes) | Unreviewed material. Useful, but it has not been settled and does not carry the standing of the above |
+| [`docs/`](docs) | The guides, published at [protocol.streetmesh.com](https://protocol.streetmesh.com) |
+
+Implementations live elsewhere: [`Protocol-PHP`](https://github.com/StreetMesh/Protocol-PHP)
+is the framework-free reference, and [`Protocol-Laravel`](https://github.com/StreetMesh/Protocol-Laravel)
+binds it to a framework. Neither is the authority — `conformance/` is.
 
 ## License
 

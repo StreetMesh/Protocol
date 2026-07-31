@@ -2,6 +2,8 @@
 
 Why StreetMesh is shaped the way it is.
 
+Unfamiliar terms are defined in [the glossary](../GLOSSARY.md).
+
 The guides describe what the protocol is. These describe what was decided,
 what it was decided instead of, and what evidence settled it — which is the part
 that gets lost first and is most expensive to reconstruct, because a conclusion

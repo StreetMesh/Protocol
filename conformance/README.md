@@ -3,6 +3,8 @@
 Executable vectors for the parts of StreetMesh that two independent servers must
 agree on byte for byte.
 
+Unfamiliar terms are defined in [the glossary](../GLOSSARY.md).
+
 ```sh
 node runners/verify.mjs
 ```

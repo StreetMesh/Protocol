@@ -3,6 +3,8 @@
 **A game of chess, played between two people who live on different servers,
 where each of them ends up holding their own verifiable record of it.**
 
+Unfamiliar terms are defined in [the glossary](GLOSSARY.md).
+
 That is the whole of v0. It is small on purpose: every part of the argument —
 federated identity, delegated permission, a record that outlives the venue that
 issued it, live shared state — has to be real for it to work at all, and none of
