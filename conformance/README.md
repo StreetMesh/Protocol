@@ -49,6 +49,7 @@ suite: a test suite in one language is an argument for that language.
 | `identity/key-history.json` | Which key an identity was using at a given moment |
 | `encoding/tid.json` | Record keys, and that sorting them sorts time |
 | `encoding/cid.json` | Content addressing — naming a record by hashing it |
+| `encoding/merkle-search-tree.json` | The record tree: which layer a key belongs to, and the tree it builds |
 | `signing/jws.json` | Compact JWS with `alg` EdDSA |
 | `signing/p256.json` | ES256 signatures as raw `r‖s`, not DER |
 | `lexicons/com.streetmesh.games.chess.json` | Record schemas, as they are defined |

@@ -1,0 +1,112 @@
+{
+    "$comment": "The record tree. A key's layer is the number of leading zero BITS of sha256(key), divided by two — so the tree's shape follows from the keys and two servers holding the same records build the same tree without coordinating. A node is {\"e\": [entries], \"l\": link-or-null}; an entry is {\"p\": bytes shared with the previous key, \"k\": the remaining key BYTES (not text), \"v\": the record link, \"t\": link-or-null to keys between this one and the next}. A layer with no keys of its own is not skipped: a node is written holding nothing but a downward link. `root` is the tree over `records`; `nodeCount` is how many nodes that takes. This implementation was checked against a live repository of 1672 records, rebuilding all 463 of its nodes under the names its own network had given them.",
+    "layers": {
+        "$comment": "Checkable on its own, and wrong layers make every later answer wrong.",
+        "vectors": [
+            {
+                "key": "actor.rpg.stats/self",
+                "layer": 0
+            },
+            {
+                "key": "app.bsky.actor.profile/self",
+                "layer": 1
+            },
+            {
+                "key": "app.bsky.feed.generator/aaancxhvd5lxu",
+                "layer": 1
+            },
+            {
+                "key": "app.bsky.feed.generator/atproto-devs",
+                "layer": 0
+            },
+            {
+                "key": "app.bsky.feed.like/3jucagnrmn22x",
+                "layer": 0
+            },
+            {
+                "key": "app.bsky.feed.like/3jucahkymkk2e",
+                "layer": 3
+            },
+            {
+                "key": "app.bsky.feed.like/3jucaj3qgmk2h",
+                "layer": 1
+            },
+            {
+                "key": "app.bsky.feed.like/3jucak5thpc24",
+                "layer": 0
+            },
+            {
+                "key": "app.bsky.feed.like/3jucaow7dzl2k",
+                "layer": 0
+            },
+            {
+                "key": "app.bsky.feed.like/3jucavec76l2k",
+                "layer": 0
+            },
+            {
+                "key": "app.bsky.feed.like/3jucb2d7ojs2g",
+                "layer": 0
+            },
+            {
+                "key": "app.bsky.feed.like/3jucb2tkqss2e",
+                "layer": 1
+            }
+        ]
+    },
+    "trees": [
+        {
+            "name": "an empty repository still has a root",
+            "records": {},
+            "root": "bafyreie5737gdxlw5i64vzichcalba3z2v5n6icifvx5xytvske7mr3hpm",
+            "nodeCount": 1
+        },
+        {
+            "name": "forty records from a live repository",
+            "source": "did:plc:ewvi7nxzyoun6zhxrhs64oiz",
+            "records": {
+                "actor.rpg.stats/self": "bafyreid27xtogzslgzc3ymbjgnyrx3yykmfzfqesxt537hegmm6hmiajr4",
+                "app.bsky.actor.profile/self": "bafyreicdwixhubhirckrrt7mqcoiq4u47b7quxlm24r547qcth4bc2ubq4",
+                "app.bsky.feed.generator/aaancxhvd5lxu": "bafyreihyxi5j4zwi4mtuvowri725c7kpw67iglspte4ykxgew7z7ob2wou",
+                "app.bsky.feed.generator/atproto-devs": "bafyreigvcg6cxjzqxismjeaif6yg4qaldk7t2l24qluyh5wzllhko4xf4a",
+                "app.bsky.feed.like/3jucagnrmn22x": "bafyreieohq4ngetnrpse22mynxpinzfnaw6m5xcsjj3s4oiidjlnnfo76a",
+                "app.bsky.feed.like/3jucahkymkk2e": "bafyreidqrmqvrnz52efgqfavvjdbwob3bc2g3vvgmhmexgx4xputjty754",
+                "app.bsky.feed.like/3jucaj3qgmk2h": "bafyreig5c2atahtzr2vo4v64aovgqbv6qwivfwf3ex5gn2537wwmtnkm3e",
+                "app.bsky.feed.like/3jucak5thpc24": "bafyreihxmwu5qrh6ktyo2f6jht632cr7yxrx6qikeoapqakesrxlkbzjje",
+                "app.bsky.feed.like/3jucaow7dzl2k": "bafyreidyhsstqem43nevh65u6dolhbxmwllpbetdb7psznjl6k4w6oonem",
+                "app.bsky.feed.like/3jucavec76l2k": "bafyreifjtco4uqas7lz7lhkrwp76erbr4gt6akh6hfcnre7exgsn2pdyru",
+                "app.bsky.feed.like/3jucb2d7ojs2g": "bafyreibobswhj7by2j475wtnbtknrbdxwjndb2mdjs74bhy6k3n26fw4hm",
+                "app.bsky.feed.like/3jucb2tkqss2e": "bafyreidza5diyko6ue5jgdjcdklmjqqmm5l3pcnm67kp6tpb46xbzd7rje",
+                "app.bsky.feed.like/3jucdh4ph6t2h": "bafyreicyssw2zzmfdmkbgui5ckhl6xwvqlug3umtif4nx6kvcvwk2rufwa",
+                "app.bsky.feed.like/3jucdh5773t23": "bafyreicpbaqdf2q34fgogs7wpzfca67opthm2pafnkmpvlofqtr5mm7d2u",
+                "app.bsky.feed.like/3jucdjcaw2e2o": "bafyreihccajlkkiqgnshzlfcddiiff7apg4v7w73ezcpl5p2cuztcmt5tq",
+                "app.bsky.feed.like/3juceh3omld2x": "bafyreidqaia7t2spl4km7izo3sm6xvm2lzwzjew7fmbvhyq7dly7vzbkjq",
+                "app.bsky.feed.like/3juch2eaifc2d": "bafyreiadcs72zsxwad6tjyj5jrqyieahmynlkjlmwhp6ig34qejnknitbi",
+                "app.bsky.feed.like/3jucj4s3sgl2s": "bafyreifueijzfynnjwa35vuvpjqy5c3dsij543bjssks6zbughmkpq4wwi",
+                "app.bsky.feed.like/3jucj5sf5sf2f": "bafyreidnaka2vnkfr3cfgmutylpwx24rxeeajtevztxmy6gsbybfzcgxbm",
+                "app.bsky.feed.like/3jucj6qh5y52f": "bafyreicdfauktxycwt5lldoukl37r4dfq6zlaceh3d2i7s2q3pjs4pvdpa",
+                "app.bsky.feed.like/3jucjaugchu2r": "bafyreide3kcsf6kjn76qah243cghddqcdyepbg757a7x3sroiep7p3q5hy",
+                "app.bsky.feed.like/3jucqrigqwc2i": "bafyreidd5rgtzkhvmdttppao7ilu3hvc3jpfms3d7lp6674vh6nytw473i",
+                "app.bsky.feed.like/3jucqrl4yos2e": "bafyreigxlnhdentd7allsfyeypvl3ctjgtnlulxuephfcn4e2tig6vdwum",
+                "app.bsky.feed.like/3juczuob5322t": "bafyreieuevtowobjgfrbde6uynutnodffwsf5vqbzatirf46xnnunknhpi",
+                "app.bsky.feed.like/3judaawhdl22f": "bafyreicw4abvwounyzbo7in225rusmnept2hoqpqcsstqddkxya7fap36i",
+                "app.bsky.feed.like/3judacwuep22p": "bafyreibd3ifki5oy4yrglqoojbznaym67awcazsinlf3h6fixnf4ps4coi",
+                "app.bsky.feed.like/3judar2tkxz2b": "bafyreif5yl2irlsubxwohdrtdt54b55ht5qcwswta5otmejo3cy647ceqa",
+                "app.bsky.feed.like/3judardj7qq2u": "bafyreibfbwqurwvrbtdiuwe6lnr7uanz54kz5oep7bns2zaffwmqxzedk4",
+                "app.bsky.feed.like/3judauw3f4y2u": "bafyreih2ek7gpewwtihwsoriwi4iv4gmnxikolmiabiyupgc3hlcz6zepy",
+                "app.bsky.feed.like/3judb2yjy6f2o": "bafyreieyb6rhmd5c37hbra6fkcbvfkn74hchix3cntyw5oyey7afbzurxi",
+                "app.bsky.feed.like/3judf34rhsv2m": "bafyreienwf7kd4togkkfk5inbcorjfoxcmbqoehlvtmqwdyctrvorxirxm",
+                "app.bsky.feed.like/3judfiri6ac2y": "bafyreiblnnbktdkez2lityb2cd6rkmlpzrvogtq4mn6khf4lsohp3amc64",
+                "app.bsky.feed.like/3judfmzjsof2n": "bafyreicpo5bb2ser6lrphy5tcl62y4zxasehbi4hv2mzldsagnlpmjkhoi",
+                "app.bsky.feed.like/3judfo4s63j25": "bafyreibnbq6k7stfk3bfxvl56tbrxxo7gksn6iqixpzscjafuw4a42tol4",
+                "app.bsky.feed.like/3judgptdfvy2u": "bafyreiavzdv4gwu5ldsqetrhxzevjpvk5wyegloamg6klt24frdldkad5m",
+                "app.bsky.feed.like/3judgpu7ges2z": "bafyreigt4s75axksxim3mx5bpthj5skh6dbfzthllit2knwvrtgnbcfzu4",
+                "app.bsky.feed.like/3judmeppiqb2y": "bafyreidumpg4uvaitdnkdd2u673zotwvvhef4gstl2nuxwjvfxfmyzzgli",
+                "app.bsky.feed.like/3judmftlvqz2y": "bafyreie4wcb7izyhrvdvahu2jjv3kwbdgaheozcyvcnszujcdtmrisqiaa",
+                "app.bsky.feed.like/3juekfc5o7d2m": "bafyreiebyixm7zopfryxsaenoolgllfmdbmmlotuszxb22cnjrnemtpiny",
+                "app.bsky.feed.like/3juekfpgprd2m": "bafyreiaggrwdnlwv33nm4sgp7retuzpygr7a34qlg5iviqq7gxfp76ogsa"
+            },
+            "root": "bafyreid2hgkwlncffnamame3dmr37z7dtgpe56z7enfdp2foey6cq234oy",
+            "nodeCount": 19
+        }
+    ]
+}
