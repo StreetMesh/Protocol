@@ -36,6 +36,27 @@ that produces a record. Chess is one. A purchase is another, and deliberately so
 table; `#white` on the end is the seat at it. An ordinary web address on purpose,
 so it can be pasted into a chat, bookmarked, or followed by anything at all.
 
+**Front page** *(ours)* — what anybody sees at the root of a server, signed in
+or not. There is one root, so a server offering more than one capability has to
+say which greets people. Configurable, and deliberately not something a package
+can claim: two routes sharing a path do not collide loudly in Laravel, so a
+package taking the root would win or lose on boot order with nobody deciding.
+
+**Home page** *(ours)* — what somebody signed in sees. Per person, and composed
+of **widgets** offered by whatever capabilities are installed, arranged by the
+operator. The one surface where two capabilities genuinely overlap: a person on
+a server that is both a home and a gathering place has business with both, on
+one screen.
+
+Distinct from the front page, and worth keeping distinct — they have different
+audiences, and conflating them makes a venue look as though it has no answer to
+"whose page is this," when in fact a visitor *is* signed in, just by a
+delegation from elsewhere rather than an account here.
+
+**Widget** *(ours)* — a panel a capability offers for a home page it does not
+own. Offered rather than placed: a server is something somebody runs, not
+something they receive.
+
 **Hub** *(ours)* — the part of a venue that runs live shared state: whose turn it
 is, who is in the room, where their cursor is. Separate from the durable half
 because the two have opposite requirements — one must be fast and can be rebuilt,
