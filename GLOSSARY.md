@@ -189,6 +189,23 @@ Its one load-bearing property: **the signature covers the encoded text, exactly 
 it travels.** There is nothing for the recipient to rebuild, so nothing in
 between can quietly reinterpret it.
 
+That cuts both ways, and it is worth knowing which way: because the signature
+covers the encoded bytes, **moving a field in the header changes every signature**
+even though the document means the same thing. A conformance vector caught
+exactly that here.
+
+**JWK** *(standard, IETF RFC 7517)* — a key written as JSON. We name keys with a
+multikey nearly everywhere, because that is what a DID document publishes; a JWK
+is needed in one place only, and unavoidably: a DPoP proof carries its key inside
+itself, since the server receiving it has never seen that key and has nowhere to
+look it up.
+
+**Thumbprint** *(standard, IETF RFC 7638)* — a key's fingerprint, used wherever
+something names a key rather than carrying it. Its trap is the same shape as
+DAG-CBOR's: only the members that define the key, in a fixed order, no
+whitespace. Get it slightly wrong and you produce a perfectly well-formed
+fingerprint that matches nothing, forever.
+
 **Canonicalization** — the rule for turning a structure into bytes so two
 programs agree on which bytes to sign. **We no longer have one**, and that is a
 feature. Signing a structure means the verifier rebuilds the bytes from whatever
@@ -215,10 +232,58 @@ its author believes it follows the spec.
 ## Permission
 
 **Delegation** — a venue acting on your behalf at your domicile, because you said
-it could. Standard OAuth, the same mechanism as "sign in with" anywhere else.
+it could. OAuth, and recognizably the mechanism behind "sign in with" anywhere
+else — but ATProtocol's profile of it, which differs in three ways that are not
+details. All three are described below: nothing is registered in advance, every
+request is pushed, and every request is signed.
 
-**Revocation** — withdrawing that. It must genuinely **refuse**, not merely stop
-working, and must not be routed around by renewing. That failure is the
+**Authorization server** *(standard)* — whoever can grant permission over an
+account. **Resource server** *(standard)* — whoever holds the thing permission is
+being granted over. Usually the same machine and deliberately not the same idea:
+a domicile may keep your records and let a server run by somebody else do the
+asking, and a venue finds out which by asking the resource rather than assuming.
+
+**Client metadata document** *(ATProto)* — how a venue says what it is. A URL
+serving a JSON document, and **that URL is the venue's identifier**. This is the
+replacement for registering: there is no sign-up call, no shared secret, no
+record on either side to keep in step or go stale. Two servers that have never
+met agree on nothing in advance — one of them just reads the other's document.
+
+Worth dwelling on, because the obvious design is the other one. Our prototype
+built a registration endpoint, a table and a handshake to solve this, and the
+standard's answer deletes all three.
+
+**PAR (pushed authorization request)** *(standard)* — sending the details of what
+you are asking for directly to the authorization server first, and getting back a
+short handle to put in the browser redirect. Mandatory here. It keeps the request
+off the URL, where it could otherwise be read or altered on its way through the
+person's own browser.
+
+**DPoP (demonstrating proof of possession)** *(standard, RFC 9449)* — proof that
+whoever is holding a token is whoever it was issued to. Mandatory here, for every
+request.
+
+The contrast is the point. A **bearer token** is a password: whatever gets hold of
+one can spend it, so a copy of the token is a copy of the authority — and tokens
+end up in logs, proxies, browser extensions and crash reports. A DPoP token is
+bound to a key. Each request carries a fresh short-lived signature over that
+method and that URL, made with a key the token names by fingerprint, and the key
+never leaves the venue. A stolen token is then worth nothing.
+
+**Nonce** *(standard)* — a value the authorization server hands out and requires
+echoed back in the next proof, rotating every few minutes. Being told to use a
+new one is an ordinary event in the middle of a working conversation rather than
+a failure — a client that treats it as an error works until the first rotation
+and then stops.
+
+**Scope** *(standard)* — what is being asked for, named. Every session here
+carries `atproto`, which is the claim to follow this profile at all. Anything of
+ours beyond that is an **extension** and has to be written down and named as one:
+a scope invented locally is a word no other server on the network knows, which is
+the difference between extending a protocol and quietly leaving it.
+
+**Revocation** — withdrawing permission. It must genuinely **refuse**, not merely
+stop working, and must not be routed around by renewing. That failure is the
 delegation doing its job.
 
 **Settlement** *(ours)* — getting a finished record home to the people it belongs
@@ -228,20 +293,36 @@ dissolving into "publish it and let them collect it."
 
 ---
 
+## Built, but not yet spoken
+
+Implemented and checked against the live network, but not yet served over the
+wire by our own servers. Listed apart from the deferred terms below because the
+distinction is real: the hard part of each of these is done.
+
+**Merkle Search Tree** *(ATProto)* — how a repository is structured internally so
+that a fingerprint of the whole thing can be computed cheaply. Implemented, and
+validated by rebuilding real strangers' repositories from their records alone —
+up to 205,922 records and 54,922 nodes — and getting the same names their own
+servers gave them.
+
+**CAR file** *(ATProto)* — the file format a repository is handed over in. Read;
+not yet written.
+
+**Commit** *(ATProto)* — your own signature over your whole cabinet, proving the
+contents are yours and that your server has not quietly added anything. Built and
+in use. An earlier version of this entry called it "the one substantive gap,"
+which it was at the time and no longer is.
+
+What remains for full interoperability is not these but the serving of them: a
+`Personal Data Server` speaks the repository protocol over XRPC, and ours does
+not yet.
+
+---
+
 ## Deferred
 
 Terms that will appear when full ATProto interoperability arrives, listed so they
 are not mysterious when they do.
-
-**Merkle Search Tree** *(ATProto)* — how a repository is structured internally so
-that a fingerprint of the whole thing can be computed cheaply.
-
-**CAR file** *(ATProto)* — the file format a repository is handed over in.
-
-**Commit** *(ATProto)* — your own signature over your whole cabinet, proving the
-contents are yours and that your server has not quietly added anything. **We do
-not have this yet**, and it is the one substantive gap rather than a mechanical
-one.
 
 **Firehose** *(ATProto)* — the live stream of everything changing across the
 network, which other servers subscribe to.
