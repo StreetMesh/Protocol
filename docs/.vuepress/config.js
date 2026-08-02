@@ -47,9 +47,6 @@ export default defineUserConfig({
     // Directory where your docs are located in the repo
     docsDir: 'docs',
 
-    // Enable "Edit this page" link
-    editLinks: true,
-
     // Customize the text of the link
     editLinkText: 'Suggest changes',
   }),
