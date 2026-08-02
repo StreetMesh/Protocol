@@ -293,10 +293,10 @@ dissolving into "publish it and let them collect it."
 
 ---
 
-## Built, but not yet spoken
+## Built, not yet served
 
-Implemented and checked against the live network, but not yet served over the
-wire by our own servers. Listed apart from the deferred terms below because the
+Implemented and checked against the live network, but our servers do not hand
+them to anybody yet. Listed apart from the deferred terms below because the
 distinction is real: the hard part of each of these is done.
 
 **Merkle Search Tree** *(ATProto)* — how a repository is structured internally so
@@ -313,9 +313,8 @@ contents are yours and that your server has not quietly added anything. Built an
 in use. An earlier version of this entry called it "the one substantive gap,"
 which it was at the time and no longer is.
 
-What remains for full interoperability is not these but the serving of them: a
-`Personal Data Server` speaks the repository protocol over XRPC, and ours does
-not yet.
+What is left for full interoperability is not building these but handing them
+over on request, which is what a **PDS** does and ours does not do yet.
 
 ---
 
