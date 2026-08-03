@@ -161,6 +161,15 @@ input, and an input can be wrong, forged, or flipped by a bug in a form.
 Publishing cannot be undone, so the safest design is one where nothing anywhere
 accepts "should this be public?" as an argument.
 
+A drawer nobody has declared is **private**, not refused. This matters more than
+it sounds: refusing would mean a domicile had to be configured for chess before
+it could receive a chess result, so a venue could only settle records to
+operators who had already heard of it — two operators agreeing privately rather
+than federation. A resident agreeing to a **scope** naming that record type is
+what makes it allowed, and that agreement arrives with the request rather than
+ahead of it. So the declared list says what a server *publishes*, not what it
+will accept.
+
 **Repository / "repo"** *(ATProto)* — a person's whole collection of public
 records, arranged so it can be handed over wholesale. Our store is *a repository
 plus a locked drawer*, since ATProto has no private records at all.
