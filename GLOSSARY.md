@@ -62,6 +62,26 @@ is, who is in the room, where their cursor is. Separate from the durable half
 because the two have opposite requirements — one must be fast and can be rebuilt,
 the other must survive.
 
+Authoritative over **the present moment and nothing else**. What happened is the
+venue's to sign and the participant's to keep, so anything that must survive a
+restart has to reach the venue before it is acknowledged to anybody.
+
+**Room** *(ours)* — one gathering inside a hub: a table, a watch party, an
+auction. It exists while people are in it and not otherwise, which is why a hub
+restarting is an inconvenience rather than a loss.
+
+**Ticket** *(ours)* — a short-lived note from a venue saying *this person may sit
+in this seat in this room*, signed with the key that venue already publishes.
+
+It exists so that the hub can stay ignorant. Everything hard — resolving a
+federated address, checking a delegation, deciding who sits where — has already
+happened by the time somebody reaches a room, and a hub can do none of it. So it
+is told the answer and has only a signature to check.
+
+That is also why there is **no shared secret** anywhere on the join path. A hub
+holds no credential at all: it cannot impersonate the venue, cannot assert
+anything back to it, and is worth nothing to steal.
+
 ---
 
 ## Identity
