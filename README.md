@@ -1,3 +1,9 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/.vuepress/public/brand/dark/svg/streetmesh-mark-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/.vuepress/public/brand/svg/streetmesh-mark.svg">
+  <img alt="StreetMesh" src="docs/.vuepress/public/brand/svg/streetmesh-mark.svg" width="96">
+</picture>
+
 # StreetMesh Protocol
 
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]

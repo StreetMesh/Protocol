@@ -1,7 +1,9 @@
 ---
 home: true
 title: Home
-heroImage: images/streetmesh-icon.png
+heroImage: /brand/svg/streetmesh-mark.svg
+heroImageDark: /brand/dark/svg/streetmesh-mark-dark.svg
+heroAlt: StreetMesh
 actions:
   - text: Start Here
     link: /guides/introduction
