@@ -56,6 +56,44 @@ Each step is finished when the one after it can rely on it without qualification
 7. **`Laravel-Chess`, `Home`, `Games`.** The experience, and the two servers that
    prove the whole stack by running it.
 
+Steps 1–6 are done, and 7 runs on a single machine: a game is played to its end
+between two residents, and each of them holds a signed record of it on the server
+they live on. What is left of 7 is the part it exists to prove — the two halves
+on separate deployments, talking over the open network rather than over
+localhost.
+
+### Found along the way
+
+Things the plan did not anticipate, recorded because each of them cost real time
+and none of them was visible from the outside.
+
+**A hub has to be able to speak.** The design had every exchange one-way: the
+venue signs, the hub verifies, the venue asks. That holds until the two moments
+that matter most — a table emptying, and a game ending after every player has
+closed their tab — both of which happen when there is nobody left to ask on
+anybody's behalf. This is now an **announcement** over a shared secret, and it is
+the only place in StreetMesh where something is trusted because of a secret
+rather than a signature. See GLOSSARY.
+
+**Half of everything we signed was invalid.** ATProtocol requires low-S ECDSA
+signatures; OpenSSL produces either half at random and verifies both. Nothing
+local can see it, because signing and verifying are the same library agreeing
+with itself. Found only by submitting to a real PLC directory.
+
+**A test suite will publish to a public registry if you let it.** Minting a
+resident became a network write, and a package suite inherited `plc.directory`
+as a default — about thirty permanent, global entries for hosts that exist on one
+laptop. There are now three guards, and the useful one is that no package suite
+can reach the network at all.
+
+### Open
+
+**Addresses that are not hostnames.** A handle is a hostname, so a resident of
+`streetmesh.com` is `collegeman.streetmesh.com`. Whether a domicile should also
+accept and resolve `streetmesh.com/@collegeman` — as something a person types
+rather than as a handle, which it cannot be — is undecided. The prototype
+supported both shapes; this does not.
+
 ## Not in v0
 
 Deferred deliberately, and each for a stated reason rather than by omission.

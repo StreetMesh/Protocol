@@ -13,6 +13,7 @@ surprising.
 | | |
 |---|---|
 | [`identity.md`](identity.md) | Why identity is `did:plc`, why records are JWS, who signs what, and what each of those costs |
+| [`realtime.md`](realtime.md) | Whether a hub may assert anything to a venue, what it costs to let it, and the three constraints that keep it small |
 | [`wire-surface.md`](wire-surface.md) | What actually crossed the wire in the first working implementation, measured rather than remembered, and which parts of it were accidents |
 
 Not everything written down is a decision. Material that was thought out loud

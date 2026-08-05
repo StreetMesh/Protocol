@@ -78,9 +78,51 @@ federated address, checking a delegation, deciding who sits where — has alread
 happened by the time somebody reaches a room, and a hub can do none of it. So it
 is told the answer and has only a signature to check.
 
-That is also why there is **no shared secret** anywhere on the join path. A hub
-holds no credential at all: it cannot impersonate the venue, cannot assert
-anything back to it, and is worth nothing to steal.
+That is also why there is **no shared secret anywhere on the join path**. A hub
+cannot impersonate the venue and a stolen ticket is worth one seat for a few
+minutes.
+
+It is no longer true that a hub holds no credential at all. It holds one, for
+one direction, described next — and that entry is worth reading, because it is
+the only place in StreetMesh where anything is trusted because of a secret
+rather than because of a signature.
+
+**Announcement** *(ours)* — a hub telling a venue that something changed in one
+of its rooms: somebody arrived or left, or a game ended.
+
+This exists because asking is not always possible. The two moments a venue most
+needs to know about both happen when nobody is looking — a table emptying, and a
+game ending after every player has closed their tab. There is nobody left to
+knock, the room is disposed shortly afterwards, and what happened is gone.
+
+So the hub speaks, and is recognised by a **shared secret**, because it has no
+key of its own to sign with. That is a real weakening and worth stating plainly:
+everything else here is trusted because of a signature that can be checked by
+anybody, and this is trusted because two servers were told the same string.
+
+What it buys is narrow. A venue believes the state of a room it opened and the
+result of a gathering it started. Nothing about *who anybody is* comes back this
+way — that arrived in a ticket the venue signed itself.
+
+The address is not configured. Every ticket names the venue that signed it, and
+the hub already resolves that DID to fetch the key it verifies with, so where to
+call back arrives with the authority to open the room. A hub serving several
+venues cannot be pointed at the wrong one.
+
+**Seat** *(ours)* — the right to a particular chair in a room, held by the venue.
+Distinct from being *in* the room, and the distinction is load-bearing: a seat
+survives closing a tab, because otherwise an opponent could take your chair while
+you reconnected. Who is actually present is the hub's answer; who may play is the
+venue's.
+
+**Gathering** *(ours)* — the venue's durable record of a room: which experience,
+who sat where, and how it ended. A room is memory and stops existing; a gathering
+is what is left when it does.
+
+**Settling** *(ours)* — turning a finished gathering into records the
+participants keep. The hub decided what happened and can sign nothing; the venue
+can sign and did not watch. Settling is where those two meet, and it is the point
+of the whole arrangement.
 
 ---
 
@@ -114,6 +156,14 @@ weaker requirement than "central registry" suggests.
 `alice@domicile.test`. Points at a DID. The DID is permanent and ugly; the handle
 is friendly and changeable.
 
+A handle is a **hostname**, which is not a formatting detail: it is what another
+server puts into DNS, and it constrains what an address can look like. A resident
+of `streetmesh.com` is `collegeman.streetmesh.com` and cannot, as a handle, be
+`streetmesh.com/@collegeman` — the second is a URL and handle resolution has
+nowhere to send it. Whether a domicile should nonetheless *accept* the second as
+something a person types, and resolve it to the first, is an open question and
+not yet built. See ROADMAP.
+
 **Handle resolution** *(ATProto)* — looking up which DID a handle points at, and
 checking that the DID names the handle back. **Both directions matter.** One
 alone would let anybody able to publish a name hang it on a stranger's identity.
@@ -126,6 +176,13 @@ including replacing the signing key and pointing your identity at a different
 server. **This is what "you can move" actually means.** A domicile holding the
 only rotation key makes leaving a favour it grants — which is the arrangement
 StreetMesh exists to argue against, so a resident holds one of their own.
+
+There are **two**, and their order is the design. PLC treats the list as an order
+of authority: an operation signed by a higher key can undo one signed by a lower.
+The resident's is first and is handed to them at sign-up and never stored, so
+moving out never needs the server's cooperation. The domicile's is second, which
+is enough to change somebody's handle for them and not enough to overrule them.
+One key in both places would have made leaving a favour again.
 
 **Key rotation** — changing your seal. Happens for ordinary reasons: routine
 practice, moving servers, someone leaving. It is the reason verification has to
@@ -250,6 +307,15 @@ alphabetical order most libraries default to.
 **Ed25519 / P-256 / secp256k1** *(standard)* — three families of signing key.
 Ed25519 is the nicest and ATProto does not permit it for identity, so identity
 keys are P-256, which is the one PHP handles without an extension.
+
+**Low-S** *(ATProto)* — for every ECDSA signature `(r, s)` there is an equally
+valid `(r, n − s)`. ATProtocol requires the lower of the two and rejects the
+other; OpenSSL picks between them at random and verifies both without complaint.
+
+Listed because the failure is invisible from inside: a round trip through your
+own library passes on a signature the network will not take, so roughly half of
+everything you sign is refused elsewhere and nothing local ever says so. Measured
+here before it was fixed: 103 signatures in 200.
 
 **Conformance vector** — a frozen example with its expected answer, in plain
 JSON. The arbiter. A claim about the wire that is not in the vectors is an
