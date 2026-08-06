@@ -158,11 +158,12 @@ is friendly and changeable.
 
 A handle is a **hostname**, which is not a formatting detail: it is what another
 server puts into DNS, and it constrains what an address can look like. A resident
-of `streetmesh.com` is `collegeman.streetmesh.com` and cannot, as a handle, be
-`streetmesh.com/@collegeman` — the second is a URL and handle resolution has
-nowhere to send it. Whether a domicile should nonetheless *accept* the second as
-something a person types, and resolve it to the first, is an open question and
-not yet built. See ROADMAP.
+of `stme.sh` is `collegeman.stme.sh` and cannot be `stme.sh/@collegeman` — the
+second is a URL, and handle resolution has nowhere to send it.
+
+An earlier prototype accepted both shapes, and that has been dropped rather than
+carried forward: one address per person, and it is the one every other server on
+the network already knows how to resolve.
 
 **Handle resolution** *(ATProto)* — looking up which DID a handle points at, and
 checking that the DID names the handle back. **Both directions matter.** One

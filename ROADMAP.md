@@ -86,13 +86,13 @@ as a default — about thirty permanent, global entries for hosts that exist on 
 laptop. There are now three guards, and the useful one is that no package suite
 can reach the network at all.
 
-### Open
+### Left behind
 
-**Addresses that are not hostnames.** A handle is a hostname, so a resident of
-`streetmesh.com` is `collegeman.streetmesh.com`. Whether a domicile should also
-accept and resolve `streetmesh.com/@collegeman` — as something a person types
-rather than as a handle, which it cannot be — is undecided. The prototype
-supported both shapes; this does not.
+**Addresses that are not hostnames.** An earlier prototype accepted
+`streetmesh.com/@collegeman` alongside `collegeman.streetmesh.com`. A handle is a
+hostname — that is how every other server on the network resolves one — so the
+first could only ever have been a local convenience that had to be translated
+before it meant anything. Considered and dropped: one address per person.
 
 ## Not in v0
 
