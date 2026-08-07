@@ -24,13 +24,53 @@ somewhere else, do something, and leave with a record of it.
 
 A server can be both. They are capabilities rather than types.
 
+**Capability** *(ours)* — one of the things a server offers. Domicile and venue
+are the two that exist; a server may offer either, both, or neither.
+
+Installing a package is how a capability arrives, and for a server that does one
+thing that is the whole of the configuration. It is not enough for two servers
+built from one codebase, which is the ordinary case once anybody runs more than
+one — so a capability can also be **switched off by name**, and the switch is
+named after the capability rather than kept in a list somewhere.
+
+Declared rather than deduced. An earlier attempt worked it out from something
+adjacent — no hub configured, therefore not a venue — which turns a forgotten
+line into a server that quietly stopped being what its operator thought it was.
+A server says what it is, and a server that says it is a venue and cannot do the
+job refuses to start.
+
 **Resident** *(ours)* — a person as their domicile knows them.
 
 **Visitor** *(ours)* — the same person as a venue sees them: someone from
 elsewhere, here for a while, whose identity the venue borrows rather than owns.
 
+**Arriving is not signing in**, and the difference is not cosmetic. A domicile
+holds accounts and the person turning up has one, so its front door is a login
+form. A venue holds no accounts at all — you arrive with an address another
+server issued and that server grants the permission — so its front door is a box
+to type an address into. A venue offering a login form is offering a key to a
+lock it does not have, which is exactly what ours did until somebody looked.
+
 **Experience** *(ours)* — something a venue hosts that people take part in and
 that produces a record. Chess is one. A purchase is another, and deliberately so.
+
+An experience is installed into a server, and brings three things: screens, a
+**room** for the hub, and whatever it writes into a participant's records. It
+does not bring a hub.
+
+**Directory** *(ours)* — a domicile's list of the people who live there, and the
+one screen that makes a server legible from outside. Each entry links to that
+person.
+
+**Profile** *(ours)* — a resident's page, at an address anybody can link to:
+`stme.sh/profile/collegeman.stme.sh`. The whole handle, not the label in front of
+it, because the handle is the thing people copy and quote.
+
+A resident's own hostname redirects here. `collegeman.stme.sh` exists so that a
+machine resolving a handle can find `/.well-known/atproto-did`; it was never
+meant to be browsed, and somebody typing it into a browser is asking about a
+person rather than resolving anything. The well-known paths keep answering, since
+they are the only reason the name exists.
 
 **Place** *(ours)* — somewhere addressable. `https://games.example/tables/7` is a
 table; `#white` on the end is the seat at it. An ordinary web address on purpose,
@@ -66,9 +106,31 @@ Authoritative over **the present moment and nothing else**. What happened is the
 venue's to sign and the participant's to keep, so anything that must survive a
 restart has to reach the venue before it is acknowledged to anybody.
 
+**A server has at most one.** Not one per experience: an operator installs
+several and the hub serves all their rooms together. A domicile has none, and
+that is not a deficiency — there is nothing live about somewhere people live.
+
+The hub itself is **generic**. It is an ordinary Colyseus application with two
+additions: the door, and the two questions a venue may ask about its own rooms.
+What makes it *this server's* hub is the rooms it serves, and only the server
+knows which those are — so the server **generates** it. See
+[`decisions/hub-runtime.md`](decisions/hub-runtime.md), which is also the record
+of how that was got wrong twice first.
+
 **Room** *(ours)* — one gathering inside a hub: a table, a watch party, an
 auction. It exists while people are in it and not otherwise, which is why a hub
 restarting is an inconvenience rather than a loss.
+
+An **experience ships a room** and the server installs it into its hub. The
+direction matters and was briefly the other way round: an experience that
+brought a hub of its own would give a server as many hubs as it had things to
+do, each ignorant of the others.
+
+A consequence worth stating because it constrains how a venue is deployed:
+**restarting a hub ends every game in progress.** Rooms are memory. So a venue
+that ships its hub on every release ends somebody's game every time a sentence
+changes on a page, and something has to decide when the hub actually needs to
+move.
 
 **Ticket** *(ours)* — a short-lived note from a venue saying *this person may sit
 in this seat in this room*, signed with the key that venue already publishes.

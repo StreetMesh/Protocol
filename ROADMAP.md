@@ -25,15 +25,23 @@ run.
 | `Laravel-Venue` | | Visitor-facing UI, venue-anchored chat, the experience menu, realtime authorization. |
 | `Laravel-Chess` | | The chess experience. |
 | `Hub` | | npm. The authoritative multiplayer host, on Colyseus: rooms, ticket verification, peer media. Only the room rules are per-experience. Named in the original plan; this is that. |
-| [`Server`](https://github.com/StreetMesh/Server) | Where do I start if I want to run a StreetMesh server — domicile, venue, or both? | Stock Laravel with the packages wired and nothing else. |
-| `Home` | What can a dedicated domicile look like? | A worked example, and the one that actually runs. |
-| `Games` | What can a dedicated venue look like? | The same, for the other capability. |
+| [`Server`](https://github.com/StreetMesh/Server) | Where do I start if I want to run a StreetMesh server — domicile, venue, or both? | Stock Laravel with every package wired in, and a worked example of each capability. |
 
-`Server` is the starting point. `Home` and `Games` are worked examples of it,
-each configured for one capability and each deployed — which also settles a
-question the prototype fudged: a domicile and a venue are separate applications
-in separate checkouts, and a server that is both is a matter of configuration
-rather than of sharing a directory.
+**`Server` is both the starting point and the worked example**, and there is
+deliberately nothing else. An earlier version of this plan named two further
+repositories — `Home`, a dedicated domicile, and `Games`, a dedicated venue — as
+the servers that would prove the stack by running it. Neither was ever built, and
+the reason is worth keeping: **the difference between them is configuration.**
+
+One checkout with every capability installed, deployed twice with different
+switches, is a domicile and a venue. That is the arrangement running now — a
+domicile at `stme.sh` and a venue at `tabletop.streetmesh.com`, from one
+repository and one commit. Two example repositories would have been two copies of
+the same application, drifting.
+
+What the prototype fudged is still settled the same way: a domicile and a venue
+are separate *applications*, with separate databases and separate identities.
+They are not separate *codebases*.
 
 ## Order
 
@@ -53,14 +61,19 @@ Each step is finished when the one after it can rely on it without qualification
    This is the likeliest source of pain in the plan.
 6. **Venue substrate and `Hub`.** The experience menu, realtime authorization,
    and the multiplayer host every experience depends on.
-7. **`Laravel-Chess`, `Home`, `Games`.** The experience, and the two servers that
-   prove the whole stack by running it.
+7. **`Laravel-Chess`, and one server deployed as two.** The experience, and the
+   proof that the whole stack runs — a domicile and a venue from one codebase,
+   on separate deployments.
 
-Steps 1–6 are done, and 7 runs on a single machine: a game is played to its end
-between two residents, and each of them holds a signed record of it on the server
-they live on. What is left of 7 is the part it exists to prove — the two halves
-on separate deployments, talking over the open network rather than over
-localhost.
+Steps 1–6 are done. Step 7 runs on a single machine — a game played to its end
+between two residents, each holding a signed record of it on the server they live
+on — and the two halves are now deployed separately and reachable over the open
+network: a domicile at `stme.sh`, a venue at `tabletop.streetmesh.com`, and the
+venue's hub beside it.
+
+What is left of 7 is the part it exists to prove: a game between two people on
+**different servers**, over the network rather than over localhost, each ending
+up holding their own record of it.
 
 ### Found along the way
 
@@ -79,6 +92,22 @@ rather than a signature. See GLOSSARY.
 signatures; OpenSSL produces either half at random and verifies both. Nothing
 local can see it, because signing and verifying are the same library agreeing
 with itself. Found only by submitting to a real PLC directory.
+
+**A server has one hub, and it has to come from somewhere.** An experience used
+to ship a hub, which gives a server as many hubs as it has things to do. Saying
+"one hub per server, experiences ship rooms" is easy; the mechanism is not,
+because the thing that runs a hub has Node and nothing else — no PHP, no
+Composer, no submodules — while the list of installed experiences lives in a PHP
+registry. So the server generates its hub and the result is committed, which is
+generated code in a repository and paid for deliberately. See
+[`decisions/hub-runtime.md`](decisions/hub-runtime.md).
+
+**A safety check that cannot tell "unsafe" from "cannot tell" stops
+everything.** A deploy refused to run against a dirty checkout. A build container
+leaves git describing nothing — every tracked file staged-deleted, every file
+untracked — which is indistinguishable from a working tree somebody threw away,
+so it refused every deploy for an afternoon. It abstains now when the index holds
+nothing, because then it has no basis for an opinion.
 
 **A test suite will publish to a public registry if you let it.** Minting a
 resident became a network write, and a package suite inherited `plc.directory`
