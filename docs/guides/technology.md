@@ -1,3 +1,0 @@
-# Technology
-
-To be written.

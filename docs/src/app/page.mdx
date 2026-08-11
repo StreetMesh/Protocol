@@ -1,0 +1,39 @@
+import { Guides } from '@/components/Guides'
+import { HeroPattern } from '@/components/HeroPattern'
+import { Resources } from '@/components/Resources'
+
+export const metadata = {
+  title: 'StreetMesh Protocol',
+  description:
+    'A collection of guides and APIs that establish the design and architecture for a spatial Web.',
+}
+
+export const sections = [
+  { title: 'Guides', id: 'guides' },
+  { title: 'The specification', id: 'specification' },
+]
+
+<HeroPattern />
+
+# The Protocol
+
+StreetMesh is an open source framework for spatially organizing the Web, built on open standards and existing protocols. This is its protocol: the rules that let people, machines, and places coexist on the Web with the fluidity and orientation we already have in the physical world. {{ className: 'lead' }}
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/guides/introduction" arrow="right">
+    <>Start here</>
+  </Button>
+  <Button href="https://github.com/StreetMesh" variant="outline">
+    <>StreetMesh on GitHub</>
+  </Button>
+</div>
+
+## What this is {{ anchor: false }}
+
+A webpage is not only graphics on a screen — it can be a room you walk through. A dashboard is not only data — it can be a place you stand in. The guides below start from how the Web got here and work toward what it takes to build somewhere people can actually be. {{ className: 'lead' }}
+
+> With just a few constraints, imagination finds its wings — structure does not confine creativity, it sets it free. — Unknown
+
+<Guides />
+
+<Resources />

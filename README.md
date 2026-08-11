@@ -1,7 +1,7 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/.vuepress/public/brand/dark/svg/streetmesh-mark-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="docs/.vuepress/public/brand/svg/streetmesh-mark.svg">
-  <img alt="StreetMesh" src="docs/.vuepress/public/brand/svg/streetmesh-mark.svg" width="96">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/public/brand/dark/svg/streetmesh-mark-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/public/brand/svg/streetmesh-mark.svg">
+  <img alt="StreetMesh" src="docs/public/brand/svg/streetmesh-mark.svg" width="96">
 </picture>
 
 # StreetMesh Protocol
@@ -23,7 +23,7 @@ You can browse the Protocol [here](https://protocol.streetmesh.com).
 | [`conformance/`](conformance) | Executable vectors. The arbiter — a claim about the wire that is not in here is an opinion |
 | [`decisions/`](decisions) | Why StreetMesh is shaped as it is: what was decided, what it was decided instead of, and what settled it |
 | [`notes/`](notes) | Unreviewed material. Useful, but it has not been settled and does not carry the standing of the above |
-| [`docs/`](docs) | The guides, published at [protocol.streetmesh.com](https://protocol.streetmesh.com) |
+| [`docs/`](docs) | The guides, and the site that publishes them at [protocol.streetmesh.com](https://protocol.streetmesh.com) |
 
 Implementations live elsewhere: [`Protocol-PHP`](https://github.com/StreetMesh/Protocol-PHP)
 is the framework-free reference, and [`Protocol-Laravel`](https://github.com/StreetMesh/Protocol-Laravel)
@@ -33,6 +33,11 @@ binds it to a framework. Neither is the authority — `conformance/` is.
 
 This work—that is, the content of this repository—is licensed under a
 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
+
+The website in [`docs/`](docs) is built on a commercial template and is the one
+exception: its code carries the [Tailwind Plus license](docs/LICENSE.md), which
+does not permit redistributing the template itself. The guides it publishes are
+this repository's content, under the license above.
 
 [cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
 [cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
