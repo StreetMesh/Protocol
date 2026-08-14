@@ -16,6 +16,9 @@ surprising.
 | [`realtime.md`](realtime.md) | Whether a hub may assert anything to a venue, what it costs to let it, and the three constraints that keep it small |
 | [`wire-surface.md`](wire-surface.md) | What actually crossed the wire in the first working implementation, measured rather than remembered, and which parts of it were accidents |
 | [`hub-runtime.md`](hub-runtime.md) | Where a hub comes from, why a server generates its own, and the three configuration failures that made it look like an architecture problem |
+| [`multiplayer.md`](multiplayer.md) | The earliest account of the two halves and the line between them — the boundary, where authority sits, and trust in both directions |
+| [`media.md`](media.md) | How audio and video are split between deciding and carrying, why media follows the seats rather than the room, and a day-per-symptom lesson about deviating from what a browser already does |
+| [`parties.md`](parties.md) | Why being here with other people belongs to a venue rather than to your own server, and the cheating vector that settled it |
 
 Not everything written down is a decision. Material that was thought out loud
 but never reconciled against the rest of the project lives in
