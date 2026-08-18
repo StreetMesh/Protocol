@@ -18,6 +18,7 @@ surprising.
 | [`hub-runtime.md`](hub-runtime.md) | Where a hub comes from, why a server generates its own, and the three configuration failures that made it look like an architecture problem |
 | [`multiplayer.md`](multiplayer.md) | The earliest account of the two halves and the line between them — the boundary, where authority sits, and trust in both directions |
 | [`media.md`](media.md) | How audio and video are split between deciding and carrying, why media follows the seats rather than the room, and a day-per-symptom lesson about deviating from what a browser already does |
+| [`arriving.md`](arriving.md) | Why a venue checks that whoever came back is who it asked about, what an unchecked answer costs, and the password manager that made the case |
 | [`parties.md`](parties.md) | Why being here with other people belongs to a venue rather than to your own server, and the cheating vector that settled it |
 
 Not everything written down is a decision. Material that was thought out loud
