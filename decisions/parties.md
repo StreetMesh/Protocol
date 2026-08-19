@@ -187,6 +187,50 @@ table rather than sending it.
 Both ways in are kept, and the strict one is still the default the interface
 leads with.
 
+## The amendment: a party stopped being a room
+
+Above it says a party lives "entirely in the venue and the hub", and that it "is
+a second room, not a mode of the first". The first half is now the venue alone.
+The second is still true of what a party *is* and no longer true of how it is
+built.
+
+A party's room in the hub answered one question — who is here this second — and
+that turned out to be the wrong place to ask it. A room issues an identity of
+its own and withdraws it when the socket drops, so a moment of bad signal read
+to everybody else as one person leaving and a stranger arriving: every peer
+connection torn down and rebuilt for a browser that never went anywhere. Worse,
+a room evicts a second session holding the same identity, and the eviction
+arrives before the join that provoked it has finished — so a reload, or a second
+tab, could kick the session it was in the middle of replacing, and then be
+kicked back, for as long as anybody was watching.
+
+None of that is a fault in the room. It is what happens when a process whose job
+is agreeing on state is asked a question about a conversation.
+
+**So the venue answers it, on the poll that was already carrying the handshake.**
+A browser names its own connection and says it is still there by asking; nothing
+is issued to it, so nothing can be withdrawn. Going quiet stops it being
+mentioned after a few seconds; going on purpose says so at once and does not
+wait to be missed. Presence and notes arriving in one answer has a second
+benefit that was not the reason for it: a note can no longer be early, because
+whatever explains who sent it is in the same response.
+
+What survives unchanged is everything the hub was actually needed for. A party
+is still a **space** — it names where its notes are left and where its
+conversation is kept — and the party claim still rides on the ticket a venue
+signs for an *experience*, which is what lets a table show that somebody is
+present and unhearable. That was always the load-bearing part, and it never
+depended on a party being a room.
+
+One consequence worth stating: a venue can now run parties with no hub at all.
+Experiences still need one.
+
+The cost is that discovery is a poll rather than a push, so somebody arriving
+can take up to a second to appear where a socket was immediate. The handshake
+that follows was already polled, so this is one interval on a multi-second
+sequence — and pushing it over the broadcast channel the venue already has
+configured remains open work, below.
+
 ## What is still open
 
 **Chat is polled, and should not stay that way.** Two seconds, asking a question

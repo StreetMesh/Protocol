@@ -228,6 +228,27 @@ Resolved along the way:
 - **Device UI** is the venue's. The component owns two toggles and the tiles; anything
   richer is a venue replacing one Blade file.
 
+## The amendment: presence left too
+
+§1 says the realtime half carries presence, and for an experience it still does —
+who is at a table, and where their pointer is, is state a room agrees on.
+
+For a **party** it no longer does, and the reasoning that moved the handshake in
+§9 turns out to have covered this as well. A room hands out an identity of its
+own and takes it back when the socket drops, so a browser that blinked read to
+everybody else as one person leaving and another arriving, and every peer
+connection was rebuilt for somebody who had not moved. That is the same mistake
+as relaying the handshake: asking a process built to agree on state a question
+about a conversation.
+
+A party's presence now rides on the poll that was already carrying its notes,
+and the browser names its own connection rather than being issued one. See
+[`parties.md`](parties.md).
+
+The rule in §1 is unchanged in spirit and sharper in wording: **the host decides
+who may speak and who is there to speak to; the realtime half carries what a
+room has to agree on.** A party has nothing a room has to agree on.
+
 ## 10. Still open
 
 - **Audio is untested.** Video crosses both ways between Safari and Chrome; nobody has
