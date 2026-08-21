@@ -20,6 +20,7 @@ surprising.
 | [`media.md`](media.md) | How audio and video are split between deciding and carrying, why media follows the seats rather than the room, and a day-per-symptom lesson about deviating from what a browser already does |
 | [`arriving.md`](arriving.md) | Why a venue checks that whoever came back is who it asked about, what an unchecked answer costs, and the password manager that made the case |
 | [`parties.md`](parties.md) | Why being here with other people belongs to a venue rather than to your own server, and the cheating vector that settled it |
+| [`avatars.md`](avatars.md) | Why what you look like is served from your own address rather than copied by whoever shows it, what that leaks, and the one record type with nothing signed inside it |
 
 Not everything written down is a decision. Material that was thought out loud
 but never reconciled against the rest of the project lives in

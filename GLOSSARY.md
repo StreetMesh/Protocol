@@ -70,7 +70,37 @@ A resident's own hostname redirects here. `collegeman.stme.sh` exists so that a
 machine resolving a handle can find `/.well-known/atproto-did`; it was never
 meant to be browsed, and somebody typing it into a browser is asking about a
 person rather than resolving anything. The well-known paths keep answering, since
-they are the only reason the name exists.
+they are the only reason the name exists — and so does `/avatar/icon`, which is
+the same kind of thing: something a stranger's software asks for, that only that
+host can answer for. See **Avatar**, below.
+
+**Avatar** *(ours)* — what somebody looks like, held by them and served from
+their own address. One record carries both halves: a **model**, the glTF body a
+spatial place puts them in, at `collegeman.stme.sh/avatar`; and an **avatar
+icon**, a square picture for everywhere a person is a name rather than a body, at
+`collegeman.stme.sh/avatar/icon`. A resident may keep several and marks one as
+theirs.
+
+Served from the address rather than copied by whoever is showing it, because a
+copy cannot be checked. A venue holding a picture of collegeman is asserting
+that is what collegeman looks like and has no way to know; `collegeman.stme.sh`
+is the only party who can put a picture at `collegeman.stme.sh`. The same
+argument as a **published mark**, one level down.
+
+An avatar is the one record type with nothing signed inside it. Every other is an
+attestation — a third party's statement about something that happened to the
+holder — and nobody is in a position to attest to a face.
+
+A resident always has one. Somebody who has published nothing is answered with
+their initial on a ground derived from their handle — so a caller always gets an
+image and never has to know how to draw a person. A name nobody goes by is still
+a refusal: a letter for anybody who asked would make every name on the internet
+look like a resident.
+
+Whoever asks a server that cannot be reached draws nothing. There is no local
+stand-in: a venue supplying one would be a venue having an opinion about what
+somebody looks like, and the two answers could only disagree. Only the icon is
+built.
 
 **Place** *(ours)* — somewhere addressable. `https://games.example/tables/7` is a
 table; `#white` on the end is the seat at it. An ordinary web address on purpose,
@@ -262,6 +292,18 @@ encoding. `z6Mk…` is one kind, `zQ3sh…` another.
 ---
 
 ## Records
+
+**Blob** *(ATProto)* — bytes a record refers to that are not themselves a
+record: a picture, a model, a file. Named by hashing them exactly as a record is,
+but under the multicodec `raw` rather than `dag-cbor` — so a blob reads
+`bafkrei…` where a record reads `bafyrei…`. Both are 59 characters and differ in
+one byte, which is why the arithmetic is pinned in the conformance vectors rather
+than left to each implementation to get right.
+
+A blob is kept *for* a collection and takes that collection's **visibility**,
+because bytes on their own carry no hint of who may read them — and the
+alternative, working it out by searching record bodies for the blob's name, means
+querying the interior of a value nothing is allowed to look inside.
 
 **Record** *(ATProto)* — one thing that happened, held by the person it happened
 to. Written once and never edited. Not tidiness: if a record could change after

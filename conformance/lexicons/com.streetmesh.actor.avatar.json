@@ -1,0 +1,38 @@
+{
+  "lexicon": 1,
+  "id": "com.streetmesh.actor.avatar",
+  "defs": {
+    "main": {
+      "type": "record",
+      "key": "tid",
+      "description": "What somebody looks like, written by them into their own repository. The first record type here with nothing signed nested inside it, and that is the point rather than an omission: every other record is an attestation, a third party's signed statement about something that happened to the holder. Nobody attests to a face. There is no party in a position to, and a signature over one would only move the question to who signed it. What makes an avatar checkable is not a signature but an address — it is served from the resident's own host, which only their domicile can answer for. Records are written once, so changing your avatar writes a new one and the old one stands; which is current is a question the repository does not answer, and a server keeps a projection beside these to answer it.",
+      "record": {
+        "type": "object",
+        "required": ["name", "createdAt"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "What the holder calls this one, for choosing between their own. Not shown to anybody else and not an identifier — two avatars may share a name, and a name may be anything.",
+            "maxGraphemes": 64
+          },
+          "icon": {
+            "type": "blob",
+            "accept": ["image/png"],
+            "maxSize": 524288,
+            "description": "The 2D one: a square picture, for anywhere a person is a name rather than a body — a party before anybody turns a camera on, a name in a list, a message. Re-encoded by the server that holds it rather than kept as uploaded, so these bytes are that server's own and carry no metadata from whatever produced them."
+          },
+          "model": {
+            "type": "blob",
+            "accept": ["model/gltf-binary"],
+            "description": "The 3D one: a body a spatial place puts the holder in. Nothing writes this yet. Named here so that the two halves of an avatar are one record from the start — an icon and a model are the same person seen from two kinds of place, and splitting them into two record types would make that a coincidence."
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "When this was written. The ordering that decides which of somebody's avatars is the most recent, though not which is current — a holder may prefer an older one."
+          }
+        }
+      }
+    }
+  }
+}

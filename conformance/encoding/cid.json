@@ -1,5 +1,5 @@
 {
-    "$comment": "Content addressing. A CID names a record by hashing it, so the same record has the same name everywhere and an altered record has a different name than the one anybody cited. Layered so that nothing is agreed out of band: multibase `b` (base32, lower case, unpadded), then CIDv1 (0x01), then the codec dag-cbor (0x71), then the multihash sha2-256 (0x12) with length 32 (0x20), then the digest. `cid` is the CID of `value` encoded as DAG-CBOR — so an implementation that fails these while passing encoding/dag-cbor.json has its hashing or its prefixes wrong rather than its encoder.",
+    "$comment": "Content addressing. A CID names a record by hashing it, so the same record has the same name everywhere and an altered record has a different name than the one anybody cited. Layered so that nothing is agreed out of band: multibase `b` (base32, lower case, unpadded), then CIDv1 (0x01), then the codec dag-cbor (0x71), then the multihash sha2-256 (0x12) with length 32 (0x20), then the digest. `cid` is the CID of `value` encoded as DAG-CBOR \u2014 so an implementation that fails these while passing encoding/dag-cbor.json has its hashing or its prefixes wrong rather than its encoder. A second set follows under `raw`. A record is DAG-CBOR and its CID reads `bafyrei\u2026`; a blob is bytes that are only themselves \u2014 an image, a model \u2014 and its CID uses the multicodec `raw` (0x55) and reads `bafkrei\u2026`. Both are CIDv1 sha2-256 and both are 59 characters, so the codec byte is the whole of what tells them apart. An implementation that hashes blob bytes and labels them dag-cbor produces a name of exactly the right shape that nothing else on the network agrees with, which is why this is pinned here rather than left to each implementation to get right.",
     "vectors": [
         {
             "name": "operation 0 of a live identity",
@@ -78,6 +78,26 @@
                 }
             },
             "cid": "bafyreiexwziulimyiw3qlhpwr2zljk5jtzdp2bgqbgoxuemjsf5a6tan3a"
+        }
+    ],
+    "raw": [
+        {
+            "name": "no bytes at all",
+            "$comment": "The empty blob. Published widely enough to be checkable against any other implementation.",
+            "bytes": "",
+            "cid": "bafkreihdwdcefgh4dqkjv67uzcmw7ojee6xedzdetojuzjevtenxquvyku"
+        },
+        {
+            "name": "three bytes",
+            "$comment": "Short enough to hash by hand, and the value IPFS documents for the same input.",
+            "bytes": "Zm9v",
+            "cid": "bafkreibme22gw2h7y2h7tg2fhqotaqjucnbc24deqo72b6mkl2egezxhvy"
+        },
+        {
+            "name": "a one-pixel PNG",
+            "$comment": "Bytes that are actually a file, which is what this codec is for.",
+            "bytes": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==",
+            "cid": "bafkreigectgq4icn5f2pon2ty7ri25ry46zwsg5ywgrlvnvslo375v6oo4"
         }
     ]
 }

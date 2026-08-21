@@ -144,8 +144,16 @@ the participant is a receipt as much as it is a game result. What it needs
 beyond v0 is references between records for refunds and disputes, private
 records, and a value rail that is deliberately somebody else's problem.
 
-**A spatial interface.** WebXR, presentation profiles, avatars. The architecture
-decisions are recorded; none of them is load-bearing for a chess table.
+**A spatial interface.** WebXR, presentation profiles, avatar *models*. The
+architecture decisions are recorded; none of them is load-bearing for a chess
+table.
+
+The 2D half of an avatar is built and is not deferred: a resident publishes an
+icon at their own address and anywhere they go fetches it from there. That was
+worth doing ahead of the rest because it settles the question the whole idea
+turns on — whether a face is a thing you own or a thing a venue keeps — at the
+cost of one picture rather than a renderer. The model is still deferred, and
+`decisions/avatars.md` records what it still has to answer.
 
 ## What v0 must demonstrate
 

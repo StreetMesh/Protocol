@@ -209,12 +209,28 @@ console.log("Record keys");
 }
 
 console.log("Content addressing");
-for (const vector of read("encoding/cid.json").vectors) {
-  const digest = createHash("sha256").update(dagCbor(vector.value)).digest();
-  // multibase b, CIDv1 (01), dag-cbor (71), sha2-256 (12), 32 bytes (20)
-  const cid = "b" + base32Lower(Buffer.concat([Buffer.from([0x01, 0x71, 0x12, 0x20]), digest]));
+{
+  const suite = read("encoding/cid.json");
 
-  check(vector.name, cid, vector.cid);
+  for (const vector of suite.vectors) {
+    const digest = createHash("sha256").update(dagCbor(vector.value)).digest();
+    // multibase b, CIDv1 (01), dag-cbor (71), sha2-256 (12), 32 bytes (20)
+    const cid = "b" + base32Lower(Buffer.concat([Buffer.from([0x01, 0x71, 0x12, 0x20]), digest]));
+
+    check(vector.name, cid, vector.cid);
+  }
+
+  // The same arithmetic over bytes that are not a structure. Only the codec
+  // byte differs, which is exactly why it is worth checking separately: every
+  // other layer agreeing is what makes a wrong codec so hard to notice.
+  for (const vector of suite.raw) {
+    const bytes = Buffer.from(vector.bytes, "base64");
+    const digest = createHash("sha256").update(bytes).digest();
+    // multibase b, CIDv1 (01), raw (55), sha2-256 (12), 32 bytes (20)
+    const cid = "b" + base32Lower(Buffer.concat([Buffer.from([0x01, 0x55, 0x12, 0x20]), digest]));
+
+    check(vector.name, cid, vector.cid);
+  }
 }
 
 console.log("Key history — which key was current when");
