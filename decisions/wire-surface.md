@@ -24,6 +24,14 @@ Repositories divide on whether a thing *implements* the protocol or is *built
 with* it. `Protocol-*` implements; `Laravel-*` builds. That is why the two
 families are named differently, and it is worth preserving.
 
+> **This table is what was planned, and the plan changed.** The three
+> `Laravel-*` packages became one, `streetmesh/laravel`, because nobody had ever
+> installed one without the others and nobody could have — none of them was
+> published. `Laravel-Chess` is `Chess2D`. What the naming convention was
+> reaching for survived: there is still a thing that implements the protocol and
+> a thing built with it, and they are still different packages. `ROADMAP.md`
+> has the layout as it now stands.
+
 | Tag | Repository | Composer | What belongs there |
 |---|---|---|---|
 | **spec** | `StreetMesh/Protocol` | — | The definition: guides, specification, and `conformance/` vectors. No implementation. |

@@ -13,19 +13,23 @@ it can be faked by a demo.
 ## The repositories
 
 Divided on whether a thing *implements* the protocol or is *built with* it.
-`Protocol-*` implements; `Laravel-*` builds; the last three are servers you can
-run.
+One thing to install, one thing to start from, and the pieces underneath.
 
 | | Answers | |
 |---|---|---|
 | [`Protocol`](https://github.com/StreetMesh/Protocol) | What is StreetMesh, exactly? | Guides, decisions, conformance vectors. No implementation. |
 | [`Protocol-PHP`](https://github.com/StreetMesh/Protocol-PHP) | | `streetmesh/protocol` — framework-free PHP. Bytes in, bytes out. |
-| [`Protocol-Laravel`](https://github.com/StreetMesh/Protocol-Laravel) | | `streetmesh/protocol-laravel` — the same, bound to the framework: routes, models, migrations, storage, HTTP, cache. |
-| `Laravel-Domicile` | | Resident-facing UI: dashboard, activity feed, data browser. |
-| `Laravel-Venue` | | Visitor-facing UI, venue-anchored chat, the experience menu, realtime authorization. |
-| `Laravel-Chess` | | The chess experience. |
-| `Hub` | | npm. The authoritative multiplayer host, on Colyseus: rooms, ticket verification, peer media. Only the room rules are per-experience. Named in the original plan; this is that. |
-| [`Server`](https://github.com/StreetMesh/Server) | Where do I start if I want to run a StreetMesh server — domicile, venue, or both? | Stock Laravel with every package wired in, and a worked example of each capability. |
+| [`Laravel`](https://github.com/StreetMesh/Laravel) | How do I make a Laravel application a StreetMesh server? | `streetmesh/laravel` — install it and it is one. Identity, records, and both halves: somewhere people live, somewhere they gather. |
+| [`Server`](https://github.com/StreetMesh/Server) | Where do I start? | `streetmesh/server` — `composer create-project`, which asks whether this is a domicile, a venue, or both. The application is yours from that moment. |
+| [`Chess2D`](https://github.com/StreetMesh/Chess2D) | What does an experience look like? | `streetmesh/chess-2d` — the first one there was, and the worked example: screens, records, and a room the hub runs. |
+| [`Hub`](https://github.com/StreetMesh/Hub) | | npm. The authoritative multiplayer host, on Colyseus: rooms and ticket verification. Only the room rules are per-experience. A venue builds its own out of this. |
+
+There were three more, and the reason they are gone is worth keeping.
+`Protocol-Laravel`, `Laravel-Domicile` and `Laravel-Venue` were separate
+packages because that is how the code got written down, not because anybody
+ever installed one without the others — and nobody could have, since none of
+them was ever published. They are one package now. The repositories are
+archived rather than deleted, and hold the history.
 
 **`Server` is both the starting point and the worked example**, and there is
 deliberately nothing else. An earlier version of this plan named two further
@@ -61,7 +65,7 @@ Each step is finished when the one after it can rely on it without qualification
    This is the likeliest source of pain in the plan.
 6. **Venue substrate and `Hub`.** The experience menu, realtime authorization,
    and the multiplayer host every experience depends on.
-7. **`Laravel-Chess`, and one server deployed as two.** The experience, and the
+7. **`Chess2D`, and one server deployed as two.** The experience, and the
    proof that the whole stack runs — a domicile and a venue from one codebase,
    on separate deployments.
 
