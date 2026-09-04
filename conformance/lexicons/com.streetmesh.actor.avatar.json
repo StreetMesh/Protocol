@@ -8,7 +8,10 @@
       "description": "What somebody looks like, written by them into their own repository. The first record type here with nothing signed nested inside it, and that is the point rather than an omission: every other record is an attestation, a third party's signed statement about something that happened to the holder. Nobody attests to a face. There is no party in a position to, and a signature over one would only move the question to who signed it. What makes an avatar checkable is not a signature but an address — it is served from the resident's own host, which only their domicile can answer for. Records are written once, so changing your avatar writes a new one and the old one stands; which is current is a question the repository does not answer, and a server keeps a projection beside these to answer it.",
       "record": {
         "type": "object",
-        "required": ["name", "createdAt"],
+        "required": [
+          "name",
+          "createdAt"
+        ],
         "properties": {
           "name": {
             "type": "string",
@@ -17,14 +20,25 @@
           },
           "icon": {
             "type": "blob",
-            "accept": ["image/png"],
+            "accept": [
+              "image/png"
+            ],
             "maxSize": 524288,
             "description": "The 2D one: a square picture, for anywhere a person is a name rather than a body — a party before anybody turns a camera on, a name in a list, a message. Re-encoded by the server that holds it rather than kept as uploaded, so these bytes are that server's own and carry no metadata from whatever produced them."
           },
           "model": {
             "type": "blob",
-            "accept": ["model/gltf-binary"],
-            "description": "The 3D one: a body a spatial place puts the holder in. Nothing writes this yet. Named here so that the two halves of an avatar are one record from the start — an icon and a model are the same person seen from two kinds of place, and splitting them into two record types would make that a coincidence."
+            "accept": [
+              "model/gltf-binary"
+            ],
+            "maxSize": 16777216,
+            "description": "The 3D one: a body a spatial place puts the holder in. Named here beside the icon so that the two halves of an avatar are one record from the start — an icon and a model are the same person seen from two kinds of place, and splitting them into two record types would make that a coincidence. A VRM, which is a glTF binary carrying VRMC_vrm: the humanoid rig is what makes it a body somebody can be put in rather than a model of one. Unlike an icon these bytes are kept as they arrived, because a server holding one cannot re-encode a model the way it re-encodes a picture — so the size named here is a ceiling rather than a promise about the contents, and whoever draws it is the party that decides what it may cost them."
+          },
+          "editableAt": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 2048,
+            "description": "Where this avatar can be opened again and changed, when whoever built it offers that. Written by the venue rather than derived by the server holding it, because the route is the venue’s own and nobody else can know it — a domicile knows which venue carried an avatar, not how that venue addresses one. Optional, and absent on an avatar its holder uploaded themselves: there was no builder involved in that one. A reader must check this against the venue named in writtenBy before offering it to anybody, because it is a URL one party wrote into another party’s record, and a link somewhere else entirely is exactly what that would be worth abusing for."
           },
           "createdAt": {
             "type": "string",
